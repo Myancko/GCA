@@ -13,7 +13,21 @@
     <p>Cadastro de Aluno</p>
 
     <div class="cadastro">
-        <form action="POST" method="post">
+        {% csrf_token %}
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form.as_p}} 
+
+            <div class="row_five">
+                <button>
+                    <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
+                    <input type="submit" id="input"value="Cadastrarr">
+                </button>
+            </div>
+        </form>
+        
+        <form action="http://127.0.0.1:8000/user/cadastro/" method="post">
+            {%csrf_token%}
             <div class="row_one">
 
                 <div class="supossed_image">
@@ -52,6 +66,14 @@
                 <input type="email"  id="email" placeholder="Email"  nome="email">
 
                 <input type="date"  id="data_nascimento" placeholder="Data de Nascimento" nome="data_nascimento">
+                
+            </div>
+
+            <div class="row_four">
+
+                <input type="password"  id="password" placeholder="Email"  nome="password">
+
+                <input type="password"  id="password2" placeholder="Data password Nascimento" nome="password2">
                 
             </div>
             

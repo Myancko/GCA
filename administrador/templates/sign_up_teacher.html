@@ -9,10 +9,22 @@
 
 {% block main %}
 <div class="main">
-    
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p}} 
+
+        <div class="row_five">
+            <button>
+                <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
+                <input type="submit" id="input"value="Cadastrarr">
+            </button>
+        </div>
+    </form>
     <p>Cadastro de Professor</p>
 
     <div class="cadastro">
+        {% csrf_token %}
+        
         <form action="POST" method="post">
             <div class="row_one">
 

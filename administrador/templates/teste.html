@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>teste</title>
+   <!--  <link rel="stylesheet" href="{% static 'css/home.css' %}"> -->
+{% endblock %}
+
+
+
+{% block main %}
+    {% for cursos in curso %}
+        {{ curso }}
+    {% endfor %}
+{% endblock %}

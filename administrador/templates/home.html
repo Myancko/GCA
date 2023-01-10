@@ -17,11 +17,11 @@
 
             <section class="option_teacher">
 
-                <p>Há {{ users }} professores cadastrados no Sistema</p>
+                <p>Há {{ teacher }} professores cadastrados no Sistema</p>
 
                 <div class="nav_option_teacher">
 
-                    <a href="{% url 'sign_up_teacher' %}">
+                    <a href="{% url 'cadastro_professor' %}">
                         <button class="sign_up_teacher">
                             Cadastrar Professor
                         </button>
@@ -44,11 +44,11 @@
 
             <section class="option_student">
 
-                <p>Há 0 Alunos cadastrados no Sistema</p>
+                <p>Há {{ student }} Alunos cadastrados no Sistema</p>
 
                 <div class="nav_option_student">
                     
-                    <a href="{% url 'sign_up_student' %}">
+                    <a href="{% url 'cadastro_estudante' %}">
                         <button class="sign_up_student">
                             Cadastrar aluno
                         </button>
