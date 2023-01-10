@@ -13,7 +13,20 @@
     <p>Cadastro - Curso</p>
 
     <form action="" method="post">
+        
         {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="funfa" type="submit">
+            <input id="submit" type="submit" value="Cadastrar Curso">
+        </div>
+
+    </form>
+
+<!-- 
+    <form action="" method="post">
+        {% csrf_token %}    
+        
         
         <div class="name_perido">
 
@@ -55,7 +68,7 @@
     </form>
 
 
-</div>
+</div> -->
 
 
 {% endblock %}

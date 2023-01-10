@@ -1,12 +1,7 @@
-from email.headerregistry import Group
-from tokenize import group
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import Disciplina, Curso 
-
-from django.views.generic.edit import CreateView
-#create
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from Users.models import CustomUser
@@ -14,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import Group
 
+from .form import Form_disciplina, Form_Curso
 from Users import forms
 
 from django.contrib.auth import get_user_model
@@ -71,8 +67,6 @@ class SignUpView_Teacher(CreateView):
 
 def sign_up_student_view (request):
 
-    
-
     return render(request, 'sign_up_student.html',  {})
 
 def sign_up_teacher_view (request):
@@ -82,9 +76,41 @@ def sign_up_teacher_view (request):
 
 def sign_up_course_view (request):
 
+    form = Form_Curso()
+    if request.method == "POST":
+        form = Form_Curso(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return render(request, 'sign_up_course.html', context)
+    
+    else:
+        form = Form_Curso()
+        context = {   
+            'form':form
+        }
+        return render(request, 'sign_up_course.html', context)
+
     return render(request, 'sign_up_course.html',  {})
 
 def sign_up_subject_view (request):
+
+    form = Form_disciplina()
+    if request.method == "POST":
+        form = Form_disciplina(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return render(request, 'sign_up_disciplina.html', context)
+    
+    else:
+        form = Form_disciplina()
+        context = {   
+            'form':form
+        }
+        return render(request, 'sign_up_disciplina.html', context)
 
     return render(request, 'sign_up_disciplina.html',  {})
 

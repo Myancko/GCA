@@ -24,7 +24,7 @@ class Disciplina (models.Model):
     def __str__(self):
         return self.nome +' '+ str(self.perido) 
     
-class  Curso (models.Model):
+class Curso (models.Model):
     
     nome = models.CharField(("Nome do Curso"), max_length=150, null=False, blank=False)
     ano = models.DateField("Ano")
