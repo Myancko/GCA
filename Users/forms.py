@@ -13,7 +13,7 @@ class CustomUserCreateForm(UserCreationForm):
     class Meta:
         model = CustomUser
 
-        fields = ( 'matricula','username' , 'email' ,'cpf', 'phone', 'first_name', 'last_name','is_staff','is_superuser')
+        fields = ( 'matricula','username' , 'email' ,'cpf', 'phone', 'is_staff','is_superuser')
         
         def save(self, commit=True):
             

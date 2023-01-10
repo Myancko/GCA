@@ -20,8 +20,42 @@
             {%endif%}
             <div class='form'>
                 {%csrf_token%}
-                {{form.as_p}}
+                <!-- {{form.as_p}} -->
                 
+                <p>
+                    <label class="cadastro_fix" for="matricula">Matricula:</label>
+                    {{form.matricula}}
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="username">Apelido:</label>
+                    {{form.username}}
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="email">E-mail:</label> 
+                    {{form.email}}  
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="cpf">CPF:</label> 
+                    {{form.cpf}}  
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="phone">Telefone:</label> 
+                    {{form.phone}}  
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="email">Senha</label> 
+                    {{form.password1}}
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="email">Confirme a senha</label> 
+                    {{form.password2}}
+                </p>
                 <!-- <p>
                     <label class="cadastro_fix" for="username">Apelido:</label>
                     {{form.username}}
