@@ -1,0 +1,138 @@
+.main
+{
+    background-color: #191919;
+    min-height: 100vh;
+    max-height: max-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center  ;
+}
+form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main  .title
+{
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.nome_perido
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.nome_perido input
+{
+    width: 331px;
+    height: 66px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.carga_horaria_optativa input[type=number]
+{
+    width: 331px;
+    height: 66px;
+    padding-left: 10px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.carga_horaria_optativa
+{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.radio_title
+{
+    color: white;
+}
+.radio_title p
+{
+    margin-top: 24px;
+}
+.radios
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+
+}
+.radios div
+{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 161px;
+    height: 66px;
+    gap: 5px;
+}
+.dependencias
+{
+    display: flex;
+    flex-direction: column;
+    min-width: 688px;
+    max-width: 688px;
+    width: max-content;
+}
+.dependencias label
+{
+    color: white;
+}
+
+input[type=submit]
+{   
+    background-color: #FFD700;
+    width: 341px;
+    height: 63px;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    cursor: pointer;
+}
+input[type=radio]
+{
+    width: 30px;
+    height: 25px;
+    
+}
+input[type=text], input[type=number], input[type=submit]
+{
+    margin-top: 15px;
+}
+
+@media only screen and (max-width: 821px)
+{
+    .dependencias
+    {
+        display: flex;
+        flex-direction: column;
+        min-width: 342px;
+        max-width: 688px;
+        width: max-content;
+    }
+}

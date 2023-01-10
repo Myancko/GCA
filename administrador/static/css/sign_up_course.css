@@ -1,0 +1,102 @@
+.main
+{
+    background-color: #191919;
+    min-height: 100vh;
+    max-height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.main p
+
+{
+    color: white;
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 72px;
+    margin-bottom: 52px;
+}
+form
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.name_perido
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+.name_perido  input
+
+{
+    margin-top: 20px;
+    width: 341px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.disciplina
+{
+    display: flex;  
+    flex-direction: column;
+    
+}
+.disciplina select
+{
+    width: 341px;
+}
+.coordenador
+{
+    display: flex;  
+    flex-direction: column;
+    
+}
+.coordenador select
+{
+    width: 341px;
+    height: 66px;
+}
+#submit
+{
+    width: 341px;
+    height: 63px;
+    background-color: #FFD700;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    display: flex;
+    justify-content: center;
+    
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.dual_label
+{
+    display: flex;
+    gap: 33px;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.funfa
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+label
+{
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+}

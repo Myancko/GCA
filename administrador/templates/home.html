@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<div class="main">
+
+    <div class="division">
+        <div class="teacher">
+
+            <img src="{% static 'icons/teacher.svg' %}" alt="">
+
+            <section class="option_teacher">
+
+                <p>Há 0 professores cadastrados no Sistema</p>
+
+                <div class="nav_option_teacher">
+
+                    <a href="{% url 'sign_up_teacher' %}">
+                        <button class="sign_up_teacher">
+                            Cadastrar Professor
+                        </button>
+                    </a>
+                    
+                    <button class="see_teachers_list">
+                        Lista de Professores
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="student">
+
+            <img src="{% static 'icons/student.svg'%}" alt="">
+
+
+            <section class="option_student">
+
+                <p>Há 0 Alunos cadastrados no Sistema</p>
+
+                <div class="nav_option_student">
+                    
+                    <a href="{% url 'sign_up_student' %}">
+                        <button class="sign_up_student">
+                            Cadastrar aluno
+                        </button>
+                    </a>
+                    <button class="see_student_list">
+                        Lista de Alunos
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="division">
+        <div class="course">
+
+            <img src="{% static 'icons/course.svg'%}" alt="">
+
+            <section class="option_course">
+
+                <p>Há 0 Cursos Registrados no Sistema</p>
+
+                <div class="nav_option_course">
+                    
+                    <a href="{%url 'sign_up_course'%}">
+                        <button class="sign_up_course">
+                            Cadastrar Curso
+                        </button>
+                    </a>
+                    <button class="see_courses_list">
+                        Lista de Cursos
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <div class="subject">
+
+            <img src="{% static 'icons/subject.svg'%}" alt="">
+
+            <section class="option_subject">
+
+                <p>Há 0 Disciplinas Registradas no Sistema</p>
+
+                <div class="nav_option_course">
+
+                    <a href="{% url 'sign_up_subject'%}">
+                        <button class="sign_up_subject">
+                            Cadastrar Disciplina
+                        </button>
+                    </a>
+                    <button class="see_subject_list">
+                        Lista de Disciplinas
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    
+    <div class="division">
+        <div class="coordinator">
+
+            <img src="{% static 'icons/coordinator.svg'%}" alt="">
+
+            <section class="option_coordinator">
+
+                <p>Há 0 Coordenadores Registradas no Sistema</p>
+
+                <a href="{% url 'register_coordinator' %}">
+                    <div class="nav_option_coordinator">
+                        <button>Cadastrar Coordenador</button>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

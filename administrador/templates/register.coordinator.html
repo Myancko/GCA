@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Registrar Coordenador</title>
+    <link rel="stylesheet" href="{% static 'css/register_coordinator.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <div class="search_box">
+        <form action=""  method="post">
+            <div>
+                <label for="search_box">Buscar Professor</label>
+            </div>
+            <div class="search_bar">
+                <input type="text" id="search_box" name="search_box" placeholder="Digite a Matricula do 'Professor'...">
+
+                <button type="submit">
+                    <img class="lupa" src="{% static 'icons/search_thing.svg' %}" alt="">
+                </button>
+                
+            </div>
+        </form>
+    
+    </div>
+</div>
+
+{% endblock %}

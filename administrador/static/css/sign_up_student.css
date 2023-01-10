@@ -1,0 +1,125 @@
+.main
+{
+    background-color: #191919;
+    /* height: 100vh; */
+    min-height: 100vh;
+    max-height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main p
+{
+    margin-top: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+}
+#nome
+{
+    width: 700px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+#matricula,  #cpf, #telefone, #email, #data_nascimento
+{
+    width: 341px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.supossed_image
+{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50000px;
+}
+.row_image
+{
+    display: flex;
+    flex-direction: column;
+}
+.row_image div
+{
+    display: flex;
+    gap: 5px;
+    justify-content: baseline;
+}
+.row_one
+{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 32.5px;
+    justify-content: center;
+}
+input[type=file]
+{
+    width: 195px;
+}
+.label_checkbox
+{
+    color: white;
+    font-size: 12px;
+}
+.row_two
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.row_three
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.row_four
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.row_five
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.row_five button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #FFD700;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]
+{
+    border: none;
+    background-color: #FFD700;
+    color: white;
+    font-weight: 900;
+    font-size: 20;
+}

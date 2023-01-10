@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<main>
+
+    <p class="titulo">GCA</p>
+
+    <p class="boas_vindas">Hoje é dia {}, faltam {} dias para o Sabado </p>
+    <section>
+    {%if messages%}
+    {%for message in messages%}
+    {{message}}
+    {%endfor%}
+    {%endif%}
+
+    <form action="" method="post" id="login_form">
+        {%csrf_token%}
+        <!-- {{form.as_p}} -->
+        
+        <div class="form">
+            <label for="">Matricula</label>
+            {{form.username}}
+
+            <label for="">Senha</label>
+            {{form.password}}
+        </div>
+
+        {% comment %} {{form.username place}}
+        {{form.password}} {% endcomment %}
+
+        <div >
+            <button class="logar" type="submit">
+                <img src="{% static 'icons/out.svg' %}" alt="">
+                Login
+            </button>
+        </div>
+        
+
+        <div>
+            
+            <p class="aviso">Não tem um conta?<br> Entre em contato com um Administrador</p>
+        </div>
+    </form>
+    </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Cadastro Aluno</title>
+    <link rel="stylesheet" href="{% static 'css/sign_up_student.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<div class="main">
+    
+    <p>Cadastro de Professor</p>
+
+    <div class="cadastro">
+        <form action="POST" method="post">
+            <div class="row_one">
+
+                <div class="supossed_image">
+
+                </div>
+
+                <div class="row_image">
+                    <div>
+                        <input type="checkbox" id="ynimagem" name="ynimagem"> 
+                        <label  class='label_checkbox'for="ynimagem">Não escolher uma foto</label>
+                    </div>
+                    <input type="file" id="Imagem" name="imagem" value="">
+                    
+                </div>
+
+                <input type="text" id="matricula" name = matricula placeholder="Matricula">
+                
+            </div>
+
+            <div class="row_two">
+
+                <input type="text" id="nome"  placeholder="Nome"  name =nome >
+                
+            </div>
+
+            <div class="row_three">
+
+                <input type="number" id="cpf" placeholder="CPF" nome="cpf">
+
+                <input type="number" id="telefone"  placeholder="Telefone" nome="telefone">
+                
+            </div>
+
+            <div class="row_four">
+
+                <input type="email"  id="email" placeholder="Email"  nome="email">
+
+                <input type="date"  id="data_nascimento" placeholder="Data de Nascimento" nome="data_nascimento">
+                
+            </div>
+            
+            <div class="row_five">
+                <button>
+                    <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
+                    <input type="submit" id="input"value="Cadastrar">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

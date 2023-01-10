@@ -1,0 +1,101 @@
+.main
+{
+    background-color: #191919;
+    /* height: 100vh; */
+    min-height: 100vh;
+    max-height: max-content;
+}
+.teacher, .student, .course,  .subject, .coordinator
+{
+    display: flex;
+    width: 542px;
+    background-color: #545454;
+    border-radius: 5px;
+    justify-content: space-around;
+}
+
+section p 
+{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.option_teacher, .option_student, .option_course, .option_subject, .option_coordinator
+{
+    display: flex;
+    flex-direction: column;
+    height: 207px;
+    justify-content: space-around;
+}
+
+.nav_option_teacher, .nav_option_student, .nav_option_course, .nav_option_subject, .nav_option_coordinator
+{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+div button
+{
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+div button:hover
+{
+    background-color: #FFD700;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.division
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 57px;
+    padding-top: 35px;
+}
+
+@media only screen and (max-width: 515px)
+{
+    section  p 
+    {
+        display: none;
+    }
+    .teacher, .student, .course,  .subject, .coordinator
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+    .teacher, .student, .course,  .subject, .coordinator img
+    {
+        width:150px;
+        padding: 5%;
+    }
+    .coordinator
+    {
+        width:150px;
+        padding: 5%;
+    }
+    .option_teacher, .option_student, .option_course, .option_subject, .option_coordinator
+    {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;  
+    }
+    .nav_option_teacher, .nav_option_student, .nav_option_course, .nav_option_subject, .nav_option_coordinator
+    {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}

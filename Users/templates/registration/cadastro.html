@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{% block import %}
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+{% endblock %}
+
+
+{%block main%}
+<main>
+    <section>
+        <h1 style="color: yellow;">Register</h1>
+        <form action="" method="post">
+            {%csrf_token%}
+            {%if messages%}
+            {%for message in messages%}
+            {{message}}
+            {%endfor%}
+            {%endif%}
+            <div class='form'>
+                {%csrf_token%}
+                {{form.as_p}}
+                
+                <!-- <p>
+                    <label class="cadastro_fix" for="username">Apelido:</label>
+                    {{form.username}}
+                </p>
+                
+                <p>
+                    <label class="cadastro_fix" for="Matricula">Matricula:</label>
+                    {{form.matricula}}
+                </p>
+                
+                <p>
+                    <label class="cadastro_fix" for="first_name">Primeiro Nome:</label>
+                    {{form.first_name}}
+                </p>
+                
+                <p>
+                    <label class="cadastro_fix" for="last_name">Sobrenome:</label>
+                    {{form.last_name}}
+                </p>
+                
+                <p>
+                    <label class="cadastro_fix" for="phone">Telefone:</label class="cadastro_fix"> 
+                    {{form.phone}}
+                </p>
+                
+                
+                <p>
+                    <label class="cadastro_fix" for="email">Email:</label> 
+                    {{form.email}}
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="email">Senha</label> 
+                    {{form.password1}}
+                </p>
+
+                <p>
+                    <label class="cadastro_fix" for="email">Confirme a senha</label> 
+                    {{form.password2}}
+                </p>
+                 -->
+            </div>
+
+            <div class='cadastra_butao'>
+                <button type="submit">Cadastrar-se</button>
+            </div>
+            
+        </form>
+    </section>
+</main>
+{%endblock%}

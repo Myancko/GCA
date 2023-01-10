@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block import_title_css %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <div class="header">
+            <p class="slogan">
+                <a class="slogan_link" href="{% url 'home' %}">GCA</a>
+            </p>
+            <img class="gear" src="{% static 'icons/gear.svg' %}" alt="">
+        </div>
+    </header>
+    
+    {% block main %}
+    
+
+    {% endblock %}
+
+    
+</body>
+
+</html>
