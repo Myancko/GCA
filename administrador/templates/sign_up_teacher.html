@@ -9,64 +9,82 @@
 
 {% block main %}
 <div class="main">
-    <form action="" method="post">
-        {%csrf_token%}
-        {{form.as_p}} 
+    
+    <p>Cadastro de Professor
+    </p>
 
-        <div class="row_five">
-            <button>
-                <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
-                <input type="submit" id="input"value="Cadastrarr">
-            </button>
-        </div>
-    </form>
-    <p>Cadastro de Professor</p>
-
+    <div  class="erros">
+        {{ form.errors }}
+    </div>
     <div class="cadastro">
-        {% csrf_token %}
-        
-        <form action="POST" method="post">
-            <div class="row_one">
+        <form action="" method="post" enctype='multipart/form-data'>
+            {%csrf_token%}
 
+            <div class="row_one">
+                
                 <div class="supossed_image">
 
                 </div>
 
                 <div class="row_image">
                     <div>
+
+                        
+
                         <input type="checkbox" id="ynimagem" name="ynimagem"> 
                         <label  class='label_checkbox'for="ynimagem">Não escolher uma foto</label>
                     </div>
-                    <input type="file" id="Imagem" name="imagem" value="">
+                    {{form.image}}
                     
                 </div>
 
-                <input type="text" id="matricula" name = matricula placeholder="Matricula">
+                {{form.matricula}}
                 
             </div>
 
             <div class="row_two">
 
-                <input type="text" id="nome"  placeholder="Nome"  name =nome >
+                {{ form.username }}
                 
             </div>
 
             <div class="row_three">
 
-                <input type="number" id="cpf" placeholder="CPF" nome="cpf">
-
-                <input type="number" id="telefone"  placeholder="Telefone" nome="telefone">
+                {{form.cpf}}
+                {{form.email}}
                 
             </div>
 
             <div class="row_four">
 
-                <input type="email"  id="email" placeholder="Email"  nome="email">
+                {{form.data_de_nascimento}}
+                {{form.phone}}
+  
+            </div>
 
-                <input type="date"  id="data_nascimento" placeholder="Data de Nascimento" nome="data_nascimento">
+            <div class="row_four">
+
+                {{form.password1}}
+                {{form.password2}}
+  
+            </div>
+
+            <div class="row_two_2">
+
+                <div>{{ form.curso_relacao.label }}</div>
+                {{ form.curso_relacao }}
+                
+            </div>  
+
+            <div class="row_two_2">
+
+                <div><div>{{ form.disciplina_relacao.label }}</div></div>
+                
+                {{ form.disciplina_relacao }}
                 
             </div>
-            
+
+
             <div class="row_five">
                 <button>
                     <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
@@ -74,6 +92,5 @@
                 </button>
             </div>
         </form>
-    </div>
-</div>
+        
 {% endblock %}

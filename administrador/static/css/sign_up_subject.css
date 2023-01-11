@@ -75,19 +75,41 @@ form
     align-items: center;
     justify-content: center;
     
-    
 
 }
-.radios div
+.radios
 {
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 161px;
+
+    gap: 5px;
+}
+.radios ul
+{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+.radios ul li
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+     width: 161px;
     height: 66px;
     gap: 5px;
+}
+.radios ul li label
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .dependencias
 {
@@ -124,8 +146,26 @@ input[type=text], input[type=number], input[type=submit]
 {
     margin-top: 15px;
 }
+.erros
+{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.erros li
+{
+    color: red;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.erros ul
+{
+    float: right;
+}
 
-@media only screen and (max-width: 821px)
+@media only screen and (max-width: 700px)
 {
     .dependencias
     {

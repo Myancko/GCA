@@ -9,47 +9,44 @@
 {% block main %}
 <div class="main">
     <p class="title">Cadastro - Disciplina</p>
-
+    {{ form.errors }}
     <form action="" method="post">
-
+        {%csrf_token%}
         <div class="nome_perido">
-
-            <input type="text" nome="nome" id="Nome" placeholder="Nome da disciplina">
-            <input type="number" nome="periodo" placeholder="Perido do da disciplina">
+            
+            {{form.nome}}
+            {{form.perido}}
 
         </div>
 
         <div class="carga_horaria_optativa">
 
-            <input type="number" nome="'carga_horaria" placeholder="Carga Horaria da Disciplina" id='carga'>
+
+            {{ form.carga_horaria }}
 
             <div class="radio_title">
+                
                 <p>Opitativa</p>
+
+              
                 <div class="radios">
-                    <div>
-                        <input type="radio"  id="optiva_sim"  name="optativa" value="Nim">
-                        <label for="optiva_sim">Sim</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="optativa_não" name="optativa" value="Nâo">
-                        <label for="optativa_não">Não</label>
-                    </div>
+                    
+                    {{ form.optativa }}
                 </div>
+
             </div>
-
-
         </div>
+
         <div class="dependencias">
-            <label for="dependencia">Dependencias</label>
-            <select name="dependencia" id="dependencia" multiple>
-                <option value="matematica">Matematica</option>
-                <option value="fisica">fisica</option>
-                <option value="algoritimos">algoritimos</option>
-            </select>
-        </div>
 
+            <label for="">{{ form.dependencia.label }}</label>
+            {{ form.dependencia }}
+
+        </div>
+    
         <input type="submit" value="Cadastrar Curso">
+        
     </form>
+
 </div>
 {% endblock %}

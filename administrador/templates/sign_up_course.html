@@ -11,64 +11,49 @@
 <div class="main">
     
     <p>Cadastro - Curso</p>
-
+    {{ form.errors }}
     <form action="" method="post">
         
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <div class="name_perido">
+            
+            {{ form.nome }}
+            {{ form.periodos }}
+
+        </div>
+
+        <div class="dual_label">
+            <div class="disciplina">
+                <label for=""> {{ form.disciplina.label }} </label>
+                {{ form.disciplina }}
+            </div>
+
+            <div>
+            
+                <div class="coordenador">
+                    <label for="coordenador">{{ form.coordenador.label }}</label>
+                    {{ form.coordenador }}
+                </div>
+    
+            </div>
+            
+
+        </div>
+        <div class="name_perido_ano">
+            
+            <div class="disciplina">
+                <label for=""> {{ form.ano.label }} </label>
+                {{ form.ano }}
+            </div>
+
+        </div>
+
 
         <div class="funfa" type="submit">
             <input id="submit" type="submit" value="Cadastrar Curso">
         </div>
 
     </form>
-
-<!-- 
-    <form action="" method="post">
-        {% csrf_token %}    
-        
-        
-        <div class="name_perido">
-
-            <input type="text" id="nome", name="nome", placeholder="Nome">
-            <input type="number", id="period", maxlength="25", name="period", placeholder="Total de Periodos">
-
-        </div>
-
-        <div class="dual_label">
-            <div class="disciplina">
-                <label for="disciplina">Escolha as Disciplinas do Curso</label>
-                <select id="disciplina" name="disciplina" multiple>
-                    <option value="1">programação orientada a objetos</option>
-                    <option value="2">matematica</option>
-                    <option value="3">apoo</option>
-                    <option value="4">aducaçao fisica</option>
-                    <option value="4">dormi</option>
-                    <option value="4">socorro</option>
-                    <option value="4">;-;</option>
-
-                </select>
-            </div>
-
-            <div class="coordenador">
-                <label for="coordenador">Escolha o coordenador do curso</label>
-                <select id="coordenador" name="coordenador">
-                    <option value="mario">mario</option>
-                    <option value="miss">miss</option>
-                    <option value="selfcontrol">selfcontrol</option>
-                </select>
-            </div>
-
-        </div>
-
-        <div class="funfa">
-            <input id="submit" type="submit" value="Cadastrar Curso">
-        </div>
-
-    </form>
-
-
-</div> -->
-
 
 {% endblock %}

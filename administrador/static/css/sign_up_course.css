@@ -29,9 +29,14 @@ form
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    
 }
-.name_perido  input
+.name_perido_ano
+{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.name_perido  input, .name_perido_ano input
 
 {
     margin-top: 20px;
@@ -99,4 +104,31 @@ label
     color: white;
     font-size: 15px;
     margin-top: 20px;
+}
+.erros
+{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.erros li
+{
+    color: red;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.erros ul
+{
+    float: right;
+}
+@media only screen and (max-width: 750px)
+{
+    .name_perido_ano
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 }

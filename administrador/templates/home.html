@@ -26,11 +26,12 @@
                             Cadastrar Professor
                         </button>
                     </a>
-                    
-                    <button class="see_teachers_list">
-                        Lista de Professores
-                    </button>
 
+                    <a href="{% url 'lista_professor' %}">
+                        <button class="see_teachers_list">
+                            Lista de Professores
+                        </button>
+                    </a>
                 </div>
 
             </section>
@@ -53,9 +54,14 @@
                             Cadastrar aluno
                         </button>
                     </a>
-                    <button class="see_student_list">
-                        Lista de Alunos
-                    </button>
+
+
+                    <a href="{% url 'lista_Aluno' %}">
+                        <button class="see_student_list">
+                            Lista de Alunos
+                        </button>
+                    </a>
+                    
                 </div>
             </section>
 
@@ -69,7 +75,7 @@
 
             <section class="option_course">
 
-                <p>Há 0 Cursos Registrados no Sistema</p>
+                <p>Há {{course}} Cursos Registrados no Sistema</p>
 
                 <div class="nav_option_course">
                     
@@ -78,9 +84,12 @@
                             Cadastrar Curso
                         </button>
                     </a>
-                    <button class="see_courses_list">
-                        Lista de Cursos
-                    </button>
+
+                    <a href="{% url 'lista_cursos'%}">
+                        <button class="see_courses_list">
+                            Lista de Cursos
+                        </button>
+                    </a>
                 </div>
             </section>
         </div>
@@ -91,7 +100,7 @@
 
             <section class="option_subject">
 
-                <p>Há 0 Disciplinas Registradas no Sistema</p>
+                <p>Há {{ disciplina }} Disciplinas Registradas no Sistema</p>
 
                 <div class="nav_option_course">
 
@@ -100,9 +109,12 @@
                             Cadastrar Disciplina
                         </button>
                     </a>
-                    <button class="see_subject_list">
-                        Lista de Disciplinas
-                    </button>
+
+                    <a href="{% url 'lista_disciplinas'%}">
+                        <button class="see_subject_list">
+                            Lista de Disciplinas
+                        </button>
+                    </a>
                 </div>
             </section>
 
