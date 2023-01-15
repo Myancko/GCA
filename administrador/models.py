@@ -29,6 +29,7 @@ class Curso (models.Model):
     nome = models.CharField(("Nome do Curso"), max_length=150, null=False, blank=False)
     ano = models.DateField("Ano")
     periodos =  models.IntegerField(('Total de peridodos'), null=False, blank=False)
+    #periodo_atual = models.IntegerField(('Total de peridodos'), null=True, blank=True)
     disciplina = models.ManyToManyField("administrador.Disciplina", verbose_name=("Disciplinas"),blank=False)
     
     coordenador = models.ForeignKey(User, verbose_name=("Coordenador"), on_delete=models.SET_NULL, null=True)
@@ -38,5 +39,5 @@ class Curso (models.Model):
     verbose_name_plural = 'Cursos'
     
     def __str__(self):
-        return self.nome +' ('+ str(self.ano) +')'
+        return self.nome +' ('+ str(self.ano.year) +')'
     

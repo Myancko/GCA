@@ -1,0 +1,78 @@
+.slogan a
+{
+    text-decoration: none;
+    color: white;
+}
+.slogan
+{
+    margin-top: 17px;
+}
+.slogan a:hover
+{
+    color: #FFD700;
+    transition: 1s;
+}
+.main
+{
+    background-color: #191919;
+    min-height: 100vh;
+    max-height: max-content;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+.curso, .disciplinas
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #191919;
+    border-radius: 5px;
+}
+.dados_curso
+{
+    width: 856px;    
+    padding: 0.5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    border-radius: 5px 5px 0px 0px;
+}
+.table
+{
+    background-color: #D9D9D9;
+    margin: 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+.table thead  tr  th, .table tbody tr th, .table tbody tr td
+{
+    border: 1px solid black;
+}
+.dados_curso p
+{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.disciplinas
+{
+    display: flex;
+    width: 856px;
+}
+.titulo_curso
+{
+    background-color: #191919;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    padding-top: 3%;
+    margin: 0px;
+}
+.titulo_disciplina
+{
+    background-color: #191919;
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0px;
+}

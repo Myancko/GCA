@@ -1,0 +1,91 @@
+.main
+{
+    background-color: #191919;
+    min-height: 100vh;
+    max-height: max-content;
+    border: none;
+}
+.link_clear
+{
+    text-decoration: none;
+    color: white;
+}
+.link_clear:hover
+{
+    color: #FFD700;
+}
+.title
+{
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+.curso
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.white_bar
+{
+    height: 60px;
+    width: 1000px;
+    background-color: white;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    align-items: center;
+
+    /* texto */
+    font-weight: bold;
+}
+.visualizar
+{
+    height: 60px;
+    width: 160px;
+    background-color: #7B7979;
+    border-radius: 0px 5px 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-left: 0.3%;
+    padding-right: 0.3%;
+
+    /* texto */
+    font-weight: bold;
+}
+.visualizar:hover
+{
+    background-color: #545454;
+    transition: 0.5s;
+}
+.visualizar:not(:hover)
+{
+    transition: 0.5s;
+}
+
+.sl
+{
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    
+}
+.curso_text
+{
+    color: white;
+}
+.bar
+{
+    height: 1px;
+    background-color: black;
+    margin-bottom: 1%;
+
+}

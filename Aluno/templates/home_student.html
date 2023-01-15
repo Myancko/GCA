@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+<link rel="stylesheet" href="{% static 'css/home_student.css' %}">
+
+<title>Home - Alunos</title>
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <div class="title">
+        <h1> Bem-vindo {{ username }}</h1>
+    </div>
+
+  <!--   <div class="sl">
+        <p class="curso_text">Curso</p>
+        <div class="bar"></div>
+    </div> -->
+
+    {% if curso == None %}
+
+        <div class="curso">
+
+            <div class="white_bar">
+                <p>Você não esta cadastrado em nem um curso, entre em contato com o administrador</p>
+            </div>
+
+            <a class="link_clear" href="{% url 'curso_aluno' aluno_dados.id%}">
+                <div class="visualizar" id="visualizar">
+                    <p>Visualizar Dados</p>
+                </div>
+            </a>
+
+        </div>
+
+    {% elif curso != None %}
+
+        <div class="curso">
+            
+            <div class="white_bar" id="teste">
+                <p>{{curso}}</p>
+            </div>
+
+            <a class="link_clear" href="{% url 'curso_aluno' aluno_dados.curso_relacao.id %}">
+                <div class="visualizar" id="visualizar">
+                    <p>Visualizar Dados</p>
+                </div>
+            </a>
+
+        </div>
+        
+    {% endif %}
+    
+</div>
+{% endblock %}

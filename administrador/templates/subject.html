@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Dados Disciplina</title>
+    <link rel="stylesheet" href="{% static 'css/subject.css' %}">
+{% endblock %}
+
+
+{% block main %}
+
+    <p>{{disciplina}}</p>
+
+   <p>{{disciplina.nome}}</p>
+   <p>{{disciplina.perido}}</p>
+   <p>{{disciplina.carga_horaria}}</p>
+   <p>{{disciplina.optativa}}</p>
+   <p>{{disciplina_dependencias}}</p>
+   {% for dados in disciplina_dependencias%}
+   <p>{{dados}}</p>
+   {% endfor %}
+   
+
+{% endblock %}

@@ -128,3 +128,11 @@ button
 {
     max-width: 125px;
 }
+.name
+{
+    color: black;
+}
+.name:hover
+{
+    color: #907f21;
+}

@@ -1,3 +1,4 @@
+from tokenize import group
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse
@@ -10,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import Group
 from django.db.models import Q
+from django.shortcuts import redirect
 
 from .form import Form_disciplina, Form_Curso
 from Users import forms
@@ -19,11 +21,48 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
 
+"""
+>>> from Users.models import CustomUser
+>>> user = CustomUser.objects.get(id=28)
+>>> user
+<CustomUser: 2312321>
+>>> user.groups
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x00000227AD051120>
+>>> user.groups.all()
+<QuerySet [<Group: Professor>]>
+>>> from django.contrib.auth.models import Group
+>>> group = Group.objects.get(name="Professor") 
+>>> user.groups.contains(group)
+True
+>>> 
+"""
+
+
 @login_required(login_url='/user/login/')
 def home_view (request):
 
+    logged = request.user
+   
     teacher_group = Group.objects.get(name='Professor')
     student_group = Group.objects.get(name='Aluno')
+    
+    try:
+        if logged.groups.get() == "Professor":
+            print("e professor!!!")
+        if logged.groups.get()  == "Aluno":
+            print("e Aluno")
+    except: 
+        print('sei oq é n, provavelmente adinistrador :/')
+    
+
+    if logged.is_superuser == True:
+        print('e adminitrador') 
+        
+    elif logged.groups.get() == student_group:
+        print('pq?<<<<<<<<<<<<<<<<<<<<')
+        aluno = redirect ('Aluno/aluno_home/', {})
+        return aluno
+    
     
     curso_list =  Curso.objects.all()
     disciplina_total =  len(Disciplina.objects.all())
@@ -72,17 +111,6 @@ class SignUpView_Teacher(CreateView):
 
         messages.success(self.request, "Usuário cadastrado com sucesso!")
         return response
-
-
-
-def sign_up_student_view (request):
-
-    return render(request, 'sign_up_student.html',  {})
-
-def sign_up_teacher_view (request):
-
-    return render(request, 'sign_up_teacher.html',  {})
-
 
 def sign_up_course_view (request):
 
@@ -182,3 +210,13 @@ def lista_Professors(request):
 
     return render(request, 'professor_lista.html', {'grupo_professor': total_de_professores,
                                                 "professor": teacher})
+    
+
+def diciplina_especifica (request, id):
+    
+    disciplina = Disciplina.objects.all()
+    disciplina  = Disciplina.objects.get(id=id)
+    m2m  = disciplina.dependencia.all()
+    
+    return render (request, 'subject.html', {'disciplina': disciplina,
+                                             'disciplina_dependencias':m2m})
