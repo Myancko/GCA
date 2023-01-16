@@ -5,16 +5,41 @@
 
 <link rel="stylesheet" href="{% static 'css/vizualizar_aluno_curso.css' %}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/__modal_selecionarAC.css' %}">
 <title>Dados do Curso</title>
 
 {% endblock %}
 
 {% block main %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modal_mine">
+                    <div class="modal_selecionar">
+                        <div class="aproveitamento">
+                            <a href="{% url 'r_aproveitamento' %}"><p>Requisitar<br>Aproveitamento de<br>disciplina</p></a>
+                        </div>
+                        <div class="conhecimento">
+                            <a href="{% url 'r_certificacao' %}"><p>Requisitar<br>Certificação de<br>conhecimento</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <!-- <p>{{curso}}</p>
     {% for disciplina in disciplinas %}
         <p>{{disciplina}}</p>
     {% endfor %} -->
     <div class="main">
+        
 
         <div class="curso">
             <p class="titulo_curso">Curso</p>
@@ -50,7 +75,11 @@
                             <td><!-- {{disciplina.status}} --> Cursando</td>
                             <td>{{disciplina.carga_horaria}}</td>
                             <td>
-                                <a href="">Opções</a>
+
+                                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Opções
+                                </button>
+                        
                             </td>
                         </tr>
                     {% endfor %}
@@ -58,4 +87,56 @@
             </table>
         </div>
     </div>
+
+{% endblock %}
+{% block js%}
+<!-- <script>
+    function show_modal ()
+    {
+        var modal = document.getElementById('modal_mine')
+        var teste = document.getElementById('teste')
+        
+       
+        modal.classList.toggle('hidden');
+
+
+        modal.style.opacity =  '1.0';
+        var x = 0
+        var y = 1
+
+        modal.style.display = "flex";
+
+        teste.onclick = function() 
+        {
+            x = 1
+            console.log(x)
+            y = 2
+        }
+        
+        
+        modal.onclick = function() 
+        {
+            x = 2
+            console.log(x)
+
+            if (y == 2)
+            {
+                console.log('n modal')
+            }
+            else if ( y == 1)
+            {
+                modal.style.display = "none";
+                
+            }
+            y= 1
+        }
+        
+       
+        console.log(x)
+        
+    }
+    
+</script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 {% endblock %}

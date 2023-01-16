@@ -14,7 +14,7 @@
     text-align: center;
     color: #FFFFFF;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 32px;
 }
 .username, .curso_relacao
 {
@@ -93,20 +93,22 @@ input[type=file]
     margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 19px;
 }
 .row_four
 {
     margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 19px;
 }
 .row_five
 {
     display: flex;
+    
     justify-content: center;
     margin-top: 30px;
+    gap: 19px;
     
 }
 

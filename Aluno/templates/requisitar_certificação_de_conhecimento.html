@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/requisitar_certificacao.css' %}">
+<title>Requisitar Certificação de Conhecimento</title>
+
+{% endblock %}
+
+{% block main %}
+<div class="main">
+
+    <p class="titulo">Certificação de Conhecimento</p>
+
+    <div class="content">
+
+        <div class="motivo">
+            <p class="titulo_2">Motivo</p>
+            <textarea class='text_area'rname="" id="" cols="30" rows="10" style="height: 169px;width: 750px;"></textarea>
+        </div>
+        
+    </div>
+
+    <div class="submit_div">
+        <button class="submit">
+            Enviar
+        </button>
+    </div>
+
+</div>
+{% endblock %}

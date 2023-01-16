@@ -1,21 +1,9 @@
-a
-{
-    text-decoration: none;
-    color: white;
-}
-.slogan
-{
-    margin-top: 17px;
-}
-a:hover
-{
-    color: white;
-}
+
 .main
 {
     background-color: #191919;
     min-height: 100vh;
-    max-height: max-content;
+    max-height: calc(max-content + 100px);
     border: none;
 }
 form
@@ -69,7 +57,7 @@ form div label
     width:  126px;
     height: 30px;
 }
-button
+.enviar_botao
 {
     width: 10%;
     background-color: #FFD700;
@@ -115,7 +103,7 @@ button
 
     padding-left: 5%;
     padding-Right: 5%;
-
+    padding-bottom: 5%;
 }
 
 .table

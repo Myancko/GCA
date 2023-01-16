@@ -1,0 +1,80 @@
+.main
+{
+    background-color: #191919;
+    min-width: 100%;
+    max-width: max-content;
+
+    min-height: 100vh;
+    max-height: max-content;
+    border: none;
+
+}
+.titulo
+{
+    color: white;
+    font-size: 32px;
+    font-weight: 900;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+}
+.content
+{
+    
+    width: 800px;
+    height: 400px;
+    background-color: #545454;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.titulo_2
+{
+    color: white;
+    font-size: 16px;
+    font-weight: 900;
+}
+.diciplina, .motivo, .documentos
+{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+}
+
+.historico, .comprovante
+{
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.historico p, .comprovante p
+{
+    
+    padding-right: 25px;
+}
+.submit
+{
+    width: 250px;
+    height: 60px;
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.submit_div
+{
+    width: 800px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-end;
+    padding-top: 20px;
+}

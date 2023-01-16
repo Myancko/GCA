@@ -7,6 +7,21 @@
     font-family: inter;
     text-decoration: none;
 }
+.slogan a
+{
+    text-decoration: none;
+    color: white;
+}
+.slogan a:hover
+{
+    color: #FFD700;
+    transition: 1s;
+}
+a
+{
+    text-decoration: none;
+    
+}
 .header
 {
     width: 100%;
@@ -14,9 +29,9 @@
     background-color: black;
 
     display: flex;
+    /* position: absolute; */
     justify-content: space-between;
     align-items: center;
-    
     
 }
 .slogan

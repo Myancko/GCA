@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+*
+{
+    margin: 0%;
+    padding: 0%;
+    border: 0%;
+    font-family: inter;
+    text-decoration: none;
+}
+.modal_selecionar
+{
+    width: 400px;
+    height: 100px;
+
+    display: flex;
+    justify-content: space-around ;
+    align-items: center;
+}
+.modal_selecionar .aproveitamento, .modal_selecionar .conhecimento
+{
+    width: 400px;
+    height: 100px;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around ;
+    align-items: center;
+    text-align: center;
+
+    /* text */
+    color: white;
+    font-size: 16px;
+    font-weight: 900;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
+}
+
+.modal_selecionar .aproveitamento
+{
+    border-right: 1px solid black;
+    border-radius: 5px 0px 0px 5px;
+}
+.modal_selecionar .conhecimento
+{
+    border-left: 1px solid black;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.aproveitamento, .conhecimento
+{
+    display: flex;
+    background-color: #FAEA98;
+}
+
+.aproveitamento p, .conhecimento p
+{
+    margin:  0px;
+}
+.aproveitamento a, .conhecimento a
+{
+    color: white;
+    text-decoration: none;
+}
+.aproveitamento a:hover, .conhecimento a:hover
+{
+    color: cyan;
+    transition: 1s;
+
+}
+.aproveitamento a:not(:hover), .conhecimento a:not(:hover)
+{
+    color: white;
+    transition: 1s;
+
+}
+
+
+
+
+
+.modal-header
+{
+    display: none;
+}
+.modal-content
+{
+    width: 0px;
+    height: 0px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+}

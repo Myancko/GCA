@@ -52,7 +52,7 @@ class UserManager(BaseUserManager):
 class CustomUser(AbstractUser):
 
 
-    image = models.ImageField(upload_to='Media', blank=True, null=False)
+    image = models.ImageField(upload_to='Media', blank=True, null=False, default='Media/no_image_dafaut.jpg')
     matricula = models.CharField("Matricula", max_length=150, unique=True)
     username = models.CharField(("Nome"), max_length=50, unique=False, primary_key=None)
     email = models.EmailField("E-mail", unique=True)

@@ -36,7 +36,7 @@ section p
     gap: 15px;
 }
 
-div button
+.sign_up_teacher ,.see_teachers_list ,.sign_up_student, .see_student_list, .sign_up_course, .see_courses_list, .sign_up_subject, .see_subject_list, .sign_coordinator
 {
     width: 140px;
     height: 50px;
@@ -45,11 +45,15 @@ div button
     border: 0px;
     cursor: pointer;
 }
-div button:hover
+.sign_up_teacher:hover ,.see_teachers_list:hover ,.sign_up_student:hover, .see_student_list:hover, .sign_up_course:hover, .see_courses_list:hover, .sign_up_subject:hover, .see_subject_list:hover, .sign_coordinator:hover 
 {
     background-color: #FFD700;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.link_coordinator
+{
+    text-decoration: none;
 }
 
 .division

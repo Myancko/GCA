@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/requisitar_aproveitamento.css' %}">
+<title>Requisitar Aproveitamento de Disciplina</title>
+
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <p class="titulo">Requisitar Aproveitamento de Disciplina</p>
+
+    <div class="content">
+
+        <div class="diciplina">
+            <p class="titulo_2">Disciplina</p>
+            <select style="width: 745px;" name="" id="">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="motivo">
+            <p class="titulo_2">Motivo</p>
+            <textarea name="" id="" cols="30" rows="10" style="height: 169px; width: 750px;"></textarea>
+        </div>
+
+        <div class="documentos">
+
+            <p class="titulo_2">Documentos</p>
+
+            <div class="historico">
+                <p class="titulo_2">Historico</p>
+                <input type="file">
+            </div>
+
+            <div class="comprovante">
+                <p class="titulo_2">Comprovante</p>
+                <input type="file">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="submit_div">
+        <button class="submit">
+            Enviar
+        </button>
+    </div>
+    
+    
+</div>
+
+{% endblock %}

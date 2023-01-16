@@ -9,7 +9,14 @@ from administrador.models import Curso, Disciplina
 def home_aluno (request):
     
     aluno = request.user
-    aluno_curso = aluno.curso_relacao.id
+    try:
+        aluno_curso = aluno.curso_relacao.id
+    except:
+        aluno_curso = None
+
+    
+    x = request.user.image.url
+    print(request.user.image.url, '<<<<<<<<')
     
     print(aluno_curso)
     
@@ -20,7 +27,8 @@ def home_aluno (request):
     
     return render(request, 'home_student.html', {'username' : nome_do_aluno_logado,
                                                  'curso' : curso_do_aluno,
-                                                 'aluno_dados' : aluno})
+                                                 'aluno_dados' : aluno,
+                                                 'img_link':x})
     #return HttpResponse("teste")
   
 @login_required(login_url='/user/login/')  
@@ -48,3 +56,20 @@ def aluno_curso (request, curso_id):
                                                        'total_disciplinas' : len_disciplinas,
                                                        'total_de_optativas': len_optativas,
                                                        'total_de_nao_optativas' : len_nao_opttivas})
+    
+def modal_selecionarAC (request):
+    
+    return render (request, 'modais/teste.html', {})
+
+def modal_menu (request):
+    
+    return render (request, 'modais/modal_menu.html', {})
+
+
+def requisitar_aproveitamento_de_disciplina (request):
+    
+    return render (request, 'requisitar_aproveitamento_de_disciplina.html', {})
+
+def requisitar_certificacao_de_conhecimento (request):
+    
+    return render (request, 'requisitar_certificação_de_conhecimento.html', {})

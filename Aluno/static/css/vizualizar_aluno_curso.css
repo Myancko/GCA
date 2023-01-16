@@ -1,17 +1,4 @@
-.slogan a
-{
-    text-decoration: none;
-    color: white;
-}
-.slogan
-{
-    margin-top: 17px;
-}
-.slogan a:hover
-{
-    color: #FFD700;
-    transition: 1s;
-}
+
 .main
 {
     background-color: #191919;

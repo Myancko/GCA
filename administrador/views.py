@@ -42,6 +42,7 @@ True
 def home_view (request):
 
     logged = request.user
+    
    
     teacher_group = Group.objects.get(name='Professor')
     student_group = Group.objects.get(name='Aluno')
