@@ -1,8 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse, reverse_lazy
 from administrador.models import Curso, Disciplina
+from django.contrib import messages
+from  .form import Form_aproveitamento_de_disciplina,Form_certificação_de_conhecimento 
+from .models import Aproveitamento_de_disciplina, Certificação_de_conhecimento
 
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 @login_required(login_url='/user/login/')
@@ -65,11 +70,69 @@ def modal_menu (request):
     
     return render (request, 'modais/modal_menu.html', {})
 
-
-def requisitar_aproveitamento_de_disciplina (request):
+class requisitar_aproveitamento_de_disciplina_class(CreateView):
+    form_class  = Form_aproveitamento_de_disciplina
+    success_url = reverse_lazy('sweet_home')
+    template_name = 'requisitar_aproveitamento_de_disciplina.html'
+    model = Aproveitamento_de_disciplina
     
-    return render (request, 'requisitar_aproveitamento_de_disciplina.html', {})
 
-def requisitar_certificacao_de_conhecimento (request):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        """ form.save_m2m() """
+        
+        messages.success(self.request, "Requisição realizada com sucesso")
+        return response
+        
+""" def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
+    
+    disciplina = Disciplina.objects.all()
+    disciplina_requisição = Disciplina.objects.get(id=disciplina_id)
+    
+    
+    form = Form_aproveitamento_de_disciplina() 
+    
+    
+    if request.method == "POST":
+        form = Form_aproveitamento_de_disciplina(request.POST)
+        for field in form:
+            print("Field Error:", field.name,  field.errors)
+            print('socorro')
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return render(request, 'requisitar_aproveitamento_de_disciplina.html', {'disciplina': disciplina,
+                'disciplina_requisição' : disciplina_requisição,
+                'form':  form}  )
+    
+    else: 
+        context = {'disciplina': disciplina,
+                'disciplina_requisição' : disciplina_requisição,
+                'form':  form}  
+
+        return render (request, 'requisitar_aproveitamento_de_disciplina.html', context) """
+    
+
+class requisitar_certificacao_de_conhecimento_class(CreateView):
+    form_class  = Form_certificação_de_conhecimento
+    success_url = reverse_lazy('sweet_home')
+    template_name = 'requisitar_certificação_de_conhecimento.html'
+    model = Certificação_de_conhecimento
+
+    
+    def get_queryset(self):
+            x = self.kwargs[disciplina_id]
+        
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        """ form.save_m2m() """
+        
+        messages.success(self.request, "Requisição realizada com sucesso")
+        return response
+    
+
+def requisitar_certificacao_de_conhecimento (request, disciplina_id):
     
     return render (request, 'requisitar_certificação_de_conhecimento.html', {})

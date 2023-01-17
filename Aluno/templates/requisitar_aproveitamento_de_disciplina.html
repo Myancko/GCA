@@ -10,47 +10,78 @@
 
 {% block main %}
 <div class="main">
-    <p class="titulo">Requisitar Aproveitamento de Disciplina</p>
-
-    <div class="content">
-
-        <div class="diciplina">
-            <p class="titulo_2">Disciplina</p>
-            <select style="width: 745px;" name="" id="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select>
+    <form  action="" method="post"  enctype='multipart/form-data'>
+        {%csrf_token%}
+        {{form.as_p}}
+        <div class="submit_div">
+            <button class="submit">
+                Enviar
+            </button>
         </div>
+    </form>
+    <p class="titulo">Requisitar Aproveitamento de Disciplina {{ object.username }}</p>
+    <p style="color: white;">{{ form.errors }}</p>
 
-        <div class="motivo">
-            <p class="titulo_2">Motivo</p>
-            <textarea name="" id="" cols="30" rows="10" style="height: 169px; width: 750px;"></textarea>
-        </div>
+    <form action="" method="post"  enctype='multipart/form-data'>
+        {%csrf_token%}
+   
+        <div class="content">
 
-        <div class="documentos">
+            <div class="diciplina">
+                <p class="titulo_2">Disciplina</p>
 
-            <p class="titulo_2">Documentos</p>
 
-            <div class="historico">
-                <p class="titulo_2">Historico</p>
-                <input type="file">
+                {{form.disciplina}}
+
+                <!-- <select name="disciplina" class="disciplina" placeholder="curso" id="id_curso_relacao" style="pointer-events: none; touch-action: none; width: 745px; background-color:  #c1c1c1;" aria-readonly="readonly"  >
+                
+                    <option selected value="{{disciplina_requisição.id}}">{{disciplina_requisição.nome}}</option>
+
+                </select> -->
+
             </div>
 
-            <div class="comprovante">
-                <p class="titulo_2">Comprovante</p>
-                <input type="file">
+            <div class="motivo">
+                <p class="titulo_2">Motivo</p>
+                {{form.motivo}}
             </div>
+
+            <div class="documentos">
+
+                <p class="titulo_2">Documentos</p>
+
+                <div class="historico">
+                    <p class="titulo_2">Historico</p>
+                    {{form.historico}}
+                </div>
+
+                <div class="comprovante">
+                    <p class="titulo_2">Comprovante</p>
+                    {{form.comprovante}}
+                </div>
+            </div>
+
+            <div class="requisitor" >
+                <select name="requisitor" id="id_requisitor" style="visibility: hidden;">
+                    <option value="{{user.id}}">{{user.username}}</option>
+                </select>
+            </div>
+
+            <div class="requisitor"  >
+                <select name="status_requisição" id="id_status_requisição" style="visibility: hidden;">
+                    <option value="aguardo">Aguardo</option>
+                </select>
+            </div>
+
         </div>
 
-    </div>
+        <div class="submit_div">
+            <button class="submit">
+                Enviar
+            </button>
+        </div>
 
-    <div class="submit_div">
-        <button class="submit">
-            Enviar
-        </button>
-    </div>
+    </form>
     
     
 </div>

@@ -11,28 +11,6 @@
 {% endblock %}
 
 {% block main %}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="modal_mine">
-                    <div class="modal_selecionar">
-                        <div class="aproveitamento">
-                            <a href="{% url 'r_aproveitamento' %}"><p>Requisitar<br>Aproveitamento de<br>disciplina</p></a>
-                        </div>
-                        <div class="conhecimento">
-                            <a href="{% url 'r_certificacao' %}"><p>Requisitar<br>Certificação de<br>conhecimento</p></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-    </div>
 
     <!-- <p>{{curso}}</p>
     {% for disciplina in disciplinas %}
@@ -68,6 +46,29 @@
 
                 <tbody>
                     {% for disciplina in disciplinas %}
+                    <div class="modal fade" id="exampleModal{{disciplina.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="modal_mine">
+                                    <div class="modal_selecionar">
+                                        <div class="aproveitamento">
+                                            <a href="{% url 'r_aproveitamento' disciplina.id %}"><p>Requisitar<br>Aproveitamento de<br>disciplina</p></a>
+                                        </div>
+                                        <div class="conhecimento">
+                                            <a href="{% url 'r_certificacao' disciplina.id %}"><p>Requisitar<br>Certificação de<br>conhecimento</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    
                         <tr>
                             <th scope="row"> {{disciplina.id}} </th>
                             <td>{{disciplina.nome}}</td>
@@ -76,7 +77,7 @@
                             <td>{{disciplina.carga_horaria}}</td>
                             <td>
 
-                                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal{{disciplina.id}}">
                                     Opções
                                 </button>
                         

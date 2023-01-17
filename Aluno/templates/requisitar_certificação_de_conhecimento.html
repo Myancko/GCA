@@ -9,24 +9,44 @@
 {% endblock %}
 
 {% block main %}
+
+<!-- <form action="">
+    {{form.as_p}}
+</form> -->
 <div class="main">
+    <form action="" method="post">
+        {%csrf_token%}
+        <p class="titulo">Certificação de Conhecimento</p>
+        {{ form.errors }}
 
-    <p class="titulo">Certificação de Conhecimento</p>
+        <div class="content">
+            <div class="disciplina">
+                <p>{{form.disciplina.label}}</p>
+                {{form.disciplina}}
 
-    <div class="content">
+            </div>
 
-        <div class="motivo">
-            <p class="titulo_2">Motivo</p>
-            <textarea class='text_area'rname="" id="" cols="30" rows="10" style="height: 169px;width: 750px;"></textarea>
+            <div class="requisitor_div" >
+                <select name="requisitor" id="id_requisitor" style="visibility: hidden; position:absolute">
+                    <option value="{{user.id}}">{{user.username}}</option>
+                </select>
+            </div>
+
+            <div class="status_requisição_div"  >
+                <select name="status_requisição" id="id_status_requisição" style="visibility: hidden; position:absolute">
+                    <option value="aguardo">Aguardo</option>
+                </select>
+            </div>
+
+
         </div>
-        
-    </div>
 
-    <div class="submit_div">
-        <button class="submit">
-            Enviar
-        </button>
-    </div>
+        <div class="submit_div">
+            <button class="submit">
+                Enviar
+            </button>
+        </div>
+    </form>
 
 </div>
 {% endblock %}
