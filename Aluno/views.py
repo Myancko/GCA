@@ -70,7 +70,7 @@ def modal_menu (request):
     
     return render (request, 'modais/modal_menu.html', {})
 
-class requisitar_aproveitamento_de_disciplina_class(CreateView):
+""" class requisitar_aproveitamento_de_disciplina_class(CreateView):
     form_class  = Form_aproveitamento_de_disciplina
     success_url = reverse_lazy('sweet_home')
     template_name = 'requisitar_aproveitamento_de_disciplina.html'
@@ -79,26 +79,27 @@ class requisitar_aproveitamento_de_disciplina_class(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        """ form.save_m2m() """
+         form.save_m2m() 
         
         messages.success(self.request, "Requisição realizada com sucesso")
-        return response
+        return response """
         
-""" def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
+def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
     
     disciplina = Disciplina.objects.all()
     disciplina_requisição = Disciplina.objects.get(id=disciplina_id)
-    
-    
     form = Form_aproveitamento_de_disciplina() 
     
-    
     if request.method == "POST":
-        form = Form_aproveitamento_de_disciplina(request.POST)
-        for field in form:
-            print("Field Error:", field.name,  field.errors)
-            print('socorro')
+        form = Form_aproveitamento_de_disciplina(request.POST, request.FILES)
+        print("#########")
+        print(form.errors)
+        print(form)
+        print(request.POST['disciplina'], '<<<<')
         if form.is_valid():
+
+            #file_two = Aproveitamento_de_disciplina( comprovante = request.FILES['comprovante'])
+            print('ok')
             form.save()
             return HttpResponseRedirect(reverse('home'))
         else:
@@ -111,7 +112,7 @@ class requisitar_aproveitamento_de_disciplina_class(CreateView):
                 'disciplina_requisição' : disciplina_requisição,
                 'form':  form}  
 
-        return render (request, 'requisitar_aproveitamento_de_disciplina.html', context) """
+        return render (request, 'requisitar_aproveitamento_de_disciplina.html', context)
     
 
 class requisitar_certificacao_de_conhecimento_class(CreateView):

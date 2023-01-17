@@ -7,10 +7,21 @@ class Form_aproveitamento_de_disciplina (ModelForm):
     
     erro_css_class = 'erro-field'
     required_css_class= 'disciplina-fields'
+
+    comprovante = forms.FileField(
+        label='Select a file',
+        help_text='max. 42 megabytes'
+    )
+
+    historico = forms.FileField(
+        label='Select a file',
+        help_text='max. 42 megabytes'
+    )
     
     class Meta:
         model = Aproveitamento_de_disciplina
         fields = 'disciplina', 'motivo', 'historico', 'comprovante', 'status_requisição', 'requisitor'
+
 
 
 

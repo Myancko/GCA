@@ -22,6 +22,7 @@
     <p class="titulo">Requisitar Aproveitamento de Disciplina {{ object.username }}</p>
     <p style="color: white;">{{ form.errors }}</p>
 
+    <h1>{{ object }} poo</h1>
     <form action="" method="post"  enctype='multipart/form-data'>
         {%csrf_token%}
    
@@ -31,15 +32,16 @@
                 <p class="titulo_2">Disciplina</p>
 
 
-                {{form.disciplina}}
+               <!--  {{form.disciplina}} -->
 
-                <!-- <select name="disciplina" class="disciplina" placeholder="curso" id="id_curso_relacao" style="pointer-events: none; touch-action: none; width: 745px; background-color:  #c1c1c1;" aria-readonly="readonly"  >
+                <select name="disciplina" class="disciplina" placeholder="curso" id="id_curso_relacao" style="pointer-events: none; touch-action: none; width: 745px; background-color:  #c1c1c1;" aria-readonly="readonly"  >
                 
                     <option selected value="{{disciplina_requisição.id}}">{{disciplina_requisição.nome}}</option>
 
-                </select> -->
+                </select>
 
             </div>
+
 
             <div class="motivo">
                 <p class="titulo_2">Motivo</p>
