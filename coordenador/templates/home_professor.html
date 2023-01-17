@@ -3,11 +3,49 @@
 
 {% block import_title_css %}
 
-<link rel="stylesheet" href="{% static 'css/requisitar_aproveitamento.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_teacher.css' %}">
 <title>Home - Professor</title>
 
 {% endblock %}
 
 {% block main %}
+    <div class="main">
 
+
+
+        <div class="requisicoes">
+
+            <div class="titulo_requisicao">
+                <p>Requisições de aproveitamento de disciplina</p>
+            </div>
+            <div class="requisicao_content">
+                <p>0</p>
+                <button class="btn_home_default">Visualizar Requisições</button>
+            </div>
+
+        </div>
+        <div class="certificacoes">
+
+            <div class="titulo_certificacoes">
+                <p>Requisições de Certificação de conhecimento</p>
+            </div>
+            <div class="certificacao_content">
+
+                <div class="requisicao_content">
+                    <p>0</p>
+                    <div class="content_button_column">
+
+                        <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
+                        <button class="btn_home_default_double">Visualizar Requisições</button>
+
+                    </div>
+                </div>
+                
+                
+            </div>
+
+        </div>
+
+
+    </div>
 {% endblock %}

@@ -63,6 +63,13 @@ def home_view (request):
         print('pq?<<<<<<<<<<<<<<<<<<<<')
         aluno = redirect ('Aluno/aluno_home/', {})
         return aluno
+
+    elif logged.groups.get() == teacher_group:
+        print('pq?<<<<<<<<<<<<<<<<<<<<')
+        aluno = redirect ('Coordenador/home_coordenador/', {})
+        return aluno
+
+    print(logged.groups)
     
     
     curso_list =  Curso.objects.all()

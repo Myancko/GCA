@@ -120,7 +120,7 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
     success_url = reverse_lazy('sweet_home')
     template_name = 'requisitar_certificação_de_conhecimento.html'
     model = Certificação_de_conhecimento
-        
+    
 
     def get(self, request, *args, **kwargs) -> HttpResponse:
         print(kwargs['disciplina_id'], "<<<<<")
@@ -131,6 +131,7 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
         self.extra_context= {'disciplina': disciplina_requisição}
         return super().get(request, *args, **kwargs)
     
+
 
 def requisitar_certificacao_de_conhecimento (request, disciplina_id):
     
