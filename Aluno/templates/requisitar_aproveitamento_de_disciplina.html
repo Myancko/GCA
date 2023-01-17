@@ -12,17 +12,11 @@
 <div class="main">
     <form  action="" method="post"  enctype='multipart/form-data'>
         {%csrf_token%}
-        {{form.as_p}}
-        <div class="submit_div">
-            <button class="submit">
-                Enviar
-            </button>
-        </div>
+        <!-- {{form.as_p}} -->
     </form>
     <p class="titulo">Requisitar Aproveitamento de Disciplina {{ object.username }}</p>
-    <p style="color: white;">{{ form.errors }}</p>
+    <div style="color: red;">{{ form.errors }}
 
-    <h1>{{ object }} poo</h1>
     <form action="" method="post"  enctype='multipart/form-data'>
         {%csrf_token%}
    
@@ -79,7 +73,7 @@
 
         <div class="submit_div">
             <button class="submit">
-                Enviar
+                Enviar Requisição
             </button>
         </div>
 

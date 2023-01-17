@@ -120,18 +120,16 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
     success_url = reverse_lazy('sweet_home')
     template_name = 'requisitar_certificação_de_conhecimento.html'
     model = Certificação_de_conhecimento
-
-    
-    def get_queryset(self):
-            x = self.kwargs[disciplina_id]
         
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        """ form.save_m2m() """
-        
-        messages.success(self.request, "Requisição realizada com sucesso")
-        return response
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        print(kwargs['disciplina_id'], "<<<<<")
+
+        disciplina = Disciplina.objects.all()
+        disciplina_requisição = Disciplina.objects.get(id=kwargs['disciplina_id'])
+
+        self.extra_context= {'disciplina': disciplina_requisição}
+        return super().get(request, *args, **kwargs)
     
 
 def requisitar_certificacao_de_conhecimento (request, disciplina_id):

@@ -17,12 +17,20 @@
     <form action="" method="post">
         {%csrf_token%}
         <p class="titulo">Certificação de Conhecimento</p>
-        {{ form.errors }}
+        <div style="color: red;">{{ form.errors }}
+        </div>
 
         <div class="content">
             <div class="disciplina">
                 <p>{{form.disciplina.label}}</p>
-                {{form.disciplina}}
+                <!-- {{form.disciplina}} -->
+                
+                <select name="disciplina" class="disciplina" placeholder="curso" id="id_curso_relacao" style="pointer-events: none; touch-action: none; width: 745px; background-color:  #c1c1c1;" aria-readonly="readonly"  >
+                
+                    <option selected value="{{disciplina.id}}">{{disciplina.nome}}</option>
+
+                </select>
+
 
             </div>
 
@@ -43,7 +51,7 @@
 
         <div class="submit_div">
             <button class="submit">
-                Enviar
+                Enviar Requisição
             </button>
         </div>
     </form>
