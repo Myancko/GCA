@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Lista de Requisições Certificacao Disciplina</title>
+    <link rel="stylesheet" href="{% static 'css/lista_aproveitamento.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="main">
+
+    <div class="search_box">
+        <form action=""  method="post">
+            <div>
+                <label for="search_box">Buscar Aluno</label>
+            </div>
+            <div class="search_bar">
+                <input type="text" id="search_box" name="search_box" placeholder="Digite a Matricula...">
+
+                <button class="enviar_botao" type="submit">
+                    <img class="lupa" src="{% static 'icons/search_thing.svg' %}" alt="">
+                </button>
+                
+            </div>
+        </form>
+    </div>
+
+    <div class="center">
+        
+        <div class="two_lables">
+            <div>
+                <p class="label_title">Certificações de Conhecimento</p>
+
+
+                <p class="label_title">A { } Certificações Registrados no Sistema</p>
+
+            
+            </div>
+    
+        </div>
+
+    </div>
+
+
+    <div class="center_2">
+
+        <div class="list">
+            
+            <table class="table" >
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Requisitor</th>
+                    <th scope="col">Disciplina</th>
+                    <th class="top_side_fourth" scope="col">Status</th>
+                    <th class="top_side_fifth" scope="col">-</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+
+                    {% for dados in certificacao %}
+                        <tr>
+
+                            <th scope="row"> {{dados.id}} </th>
+                            <td>{{dados.requisitor}}</td>
+                            <td>{{dados.disciplina}}</td>
+                            <td class="center_tabl_">{{dados.status_requisição}}</td>
+                            <td class="center_table">
+                                <a href="{% url 'certificacao' dados.id %}">
+
+                                    <button>
+                                        Visualizar
+                                    </button>
+
+                                </a>
+                            </td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+
+
+    </div>
+ 
+</div>
+{% endblock %}

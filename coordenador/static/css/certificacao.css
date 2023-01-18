@@ -1,0 +1,104 @@
+body
+{
+    background-color: #191919;
+}
+.main
+{
+    position: relative;
+    background-color: #191919;
+    min-height: 100vh;
+    max-height: max-content;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text_color_white
+{
+    color: white;
+}
+.content
+{
+    display: flex;
+    width: 800px;
+    background-color: #545454;
+    padding: 30px;
+    border-radius: 10px;
+    gap: 25px;
+}
+.img_user
+{
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+}
+.text_data
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.text_content
+{
+    display: flex;
+    gap: 10px;
+}
+.documentos a p
+{
+    margin-left: 15px;
+}
+
+#id_status_requisição{
+    height: 46px;
+    border: none;
+    overflow: hidden;
+    background-color: #191919;
+    margin-top: 15px;
+    margin-left: auto;
+ 
+}
+#id_status_requisição::-moz-focus-inner {
+  border: 0;
+
+}
+#id_status_requisição:focus {
+  outline: none;
+
+}
+#id_status_requisição .aprovar, #id_status_requisição .reprovar
+{
+    width: 200px;
+    font-size: 1.2em;
+    padding: 10px 0;
+    text-align: center;
+    margin-right: 20px;
+    display: inline-block;
+    cursor: pointer;
+    border:rgb(204, 204, 0) solid 1px;
+    border-radius: 5px;
+    color: rgb(204, 204, 0);
+    margin: auto;
+    padding: auto;
+    background-color: #191919;
+    
+
+}
+#id_status_requisição .aprovar
+{
+    margin-left: 25px;
+}
+#id_status_requisição .aprovar:hover
+{
+    background-color: green;
+
+}
+#id_status_requisição .reprovar:hover
+{
+    background-color: red;
+}
+.dados
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

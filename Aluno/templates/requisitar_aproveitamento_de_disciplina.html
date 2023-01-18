@@ -15,7 +15,7 @@
         <!-- {{form.as_p}} -->
     </form>
     <p class="titulo">Requisitar Aproveitamento de Disciplina {{ object.username }}</p>
-    <div style="color: red;">{{ form.errors }}
+    <div style="color: red;">{{ form.errors }}</div>
 
     <form action="" method="post"  enctype='multipart/form-data'>
         {%csrf_token%}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/aproveitamento.css' %}">
+<title>Aproveitamento</title>
+
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <div class="dados">
+        <p class="titulo text_color_white">
+            Requisição de Aproveitamento de Disciplina
+        </p>
+        <div style="color: red;">{{ form.errors }}</div>
+        <div class="content">
+            <img class="img_user" src="{{ aproveitamento.requisitor.image.url }}" width="200px" height="200px" alt="">
+
+            <div class="text_data text_color_white">
+                <div class="text_content">
+                    <p>Nome:</p>
+                    <p>{{aproveitamento.requisitor}}</p>
+                </div>
+                <div class="text_content">
+                    <p>Matricula:</p>
+                    <p>{{aproveitamento.requisitor.matricula}}</p>
+                </div>
+                <div class="text_content">
+                    <p>Disciplina:</p>
+                    <p>{{aproveitamento.disciplina}}</p>
+                </div>
+                <div class="text_content">
+                    <p>Motivo:</p>
+                    <p>{{aproveitamento.motivo}}</p>
+                </div>
+                <div class="text_content">
+                    <div class="documentos">
+                        <p>Documentos:</p>
+                        <a href="{{aproveitamento.historico.url}}" download>
+                            <p>Historico</p>
+                        </a>
+                        <a href="{{aproveitamento.comprovante.url}}" download>
+                            <p>Comprovante</p>
+                        </a>
+                    </div>
+                </div>
+        
+
+            </div>
+
+        </div>
+
+        <form class="teste" method="post" action="{% url 'aproveitamento' aproveitamento.id %}">
+            {%csrf_token%}
+            <div style="visibility: hidden; position:absolute">
+                {{form.disciplina}}
+                {{form.motivo}}
+                {{form.historico}}
+                {{form.comprovante}}
+                {{form.requisitor}}
+            </div>
+
+            <select name="status_requisição"  onchange="this.form.submit()" id="id_status_requisição" multiple>
+
+                <option class="reprovar" value="reprovado">Reprovar</option>
+                <option class="aprovar"  value="aprovado">Aprovar</option>
+                
+              
+            </select>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

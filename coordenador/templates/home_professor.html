@@ -9,43 +9,57 @@
 {% endblock %}
 
 {% block main %}
-    <div class="main">
+    {%  if coordenador == True %}
+        <div class="main">
 
 
 
-        <div class="requisicoes">
+            <div class="requisicoes">
 
-            <div class="titulo_requisicao">
-                <p>Requisições de aproveitamento de disciplina</p>
-            </div>
-            <div class="requisicao_content">
-                <p>0</p>
-                <button class="btn_home_default">Visualizar Requisições</button>
-            </div>
-
-        </div>
-        <div class="certificacoes">
-
-            <div class="titulo_certificacoes">
-                <p>Requisições de Certificação de conhecimento</p>
-            </div>
-            <div class="certificacao_content">
-
-                <div class="requisicao_content">
-                    <p>0</p>
-                    <div class="content_button_column">
-
-                        <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
-                        <button class="btn_home_default_double">Visualizar Requisições</button>
-
-                    </div>
+                <div class="titulo_requisicao">
+                    <p>Requisições de aproveitamento de disciplina</p>
                 </div>
-                
-                
+                <div class="requisicao_content">
+                    <p>{{total_aproveitamentos}}</p>
+                    <a href="{% url 'aproveitamento_list' %}">
+                        <button class="btn_home_default">Visualizar Requisições</button>
+                    </a>
+                </div>
+
+            </div>
+            <div class="certificacoes">
+
+                <div class="titulo_certificacoes">
+                    <p>Requisições de Certificação de conhecimento</p>
+                </div>
+                <div class="certificacao_content">
+
+                    <div class="requisicao_content">
+                        <p>{{total_certificacao}}</p>
+                        <div class="content_button_column">
+
+                            <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
+
+                            <a href="{% url 'certificacao_list' %}"   >
+
+                                <button class="btn_home_default_double">Visualizar Requisições</button>
+
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
 
+
         </div>
-
-
+    {%else%}
+    <div class="main">
+        <h1 style="color: white ;">{{ msg }}</h1>
     </div>
+        
+    {% endif %}
 {% endblock %}

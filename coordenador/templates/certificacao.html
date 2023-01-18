@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/certificacao.css' %}">
+<title>Certificacao</title>
+
+{% endblock %}
+
+{% block main %}
+<div class="main">
+    <form class="teste" method="post" action="{% url 'certificacao' certificacao.id %}">
+        {%csrf_token%}
+        <div class="dados">
+            <p class="titulo text_color_white">
+                Requisição de Certificacao de Disciplina
+            </p>
+            <div style="color: red;">{{ form.errors }}</div>
+            <div class="content">
+                <img class="img_user" src="{{ certificacao.requisitor.image.url }}" width="200px" height="200px" alt="">
+            
+                <div class="text_data text_color_white">
+                    <div class="text_content">
+                        <p>Nome:</p>
+                        <p>{{certificacao.requisitor}}</p>
+                    </div>
+                    <div class="text_content">
+                        <p>Matricula:</p>
+                        <p>{{certificacao.requisitor.matricula}}</p>
+                    </div>
+                    <div class="text_content">
+                        <p>Disciplina:</p>
+                        <p>{{certificacao.disciplina}}</p>
+                    </div>
+              
+                    <div class="text_content">
+                        <p>Nota:</p>
+                        <div>{{form.nota}}</div>
+                    </div>
+                </div>
+            
+            </div>
+        
+        
+                <div style="visibility: hidden; position:absolute">
+                    {{form.disciplina}}
+                    {{form.motivo}}
+                    {{form.historico}}
+                    {{form.comprovante}}
+                    {{form.requisitor}}
+                </div>
+            
+                <select name="status_requisição"  onchange="this.form.submit()" id="id_status_requisição" multiple>
+                
+                    <option class="reprovar" value="reprovado">Reprovar</option>
+                    <option class="aprovar"  value="aprovado">Aprovar</option>
+                    
+                
+                </select>
+        </div>
+    </form>
+</div>
+{% endblock %}
