@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Aluno</title>
+    <link rel="stylesheet" href="{% static 'css/alter_student.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<div class="main">
+    
+    <p class="titulo">Dados do Aluno(a) - {{aluno.username}}</p>
+    <div class="erros">
+        {{ form.errors }}
+    </div>
+    
+    <div class="cadastro">
+        <form action="" method="post" enctype='multipart/form-data'>
+            {%csrf_token%}
+            <div class="row_one">
+
+                <div class="supossed_image">
+                    <img src="{{ aluno.image.url }}" alt="">
+                </div>
+                <div class="row_image">
+                    Imagem Atual: <a href="{{ aluno.image.url }}">{{ aluno.image.url }}</a>
+                    Mudar:
+                    <input type="file" name="image" accept="image/*" class="image" placeholder="Image" id="id_image">
+                    
+                </div>
+
+
+                <div class="matricula_fix">
+                    <p>Matricula</p>
+                    {{form.matricula}}
+                </div>
+                
+                
+            </div>
+
+            <div class="row_two">
+                <div class="username_fix">
+                    <p>Username</p>
+                    {{ form.username }}
+                </div>
+                
+                
+            </div>
+
+            <div class="row_three">
+                <div  class="cpf_fix">
+                    <p>CPF</p>
+                    {{form.cpf}}
+                </div>
+                
+                <div class="email_fix">
+                    <p>Email</p>
+                    {{form.email}}
+                </div>
+                
+                
+            </div>
+
+            <div class="row_four">
+                <div class="data_fix">
+                    <p>Data de nascimento</p>
+                    {{form.data_de_nascimento}}
+                </div>
+                
+
+                <div class="telefone_fix">
+                    <p>telefone</p>
+                    {{form.phone}}
+                </div>
+                
+  
+            </div>
+
+            <div class="row_two">
+
+                <div class="curso_fix">
+                    <p>Curso</p>
+                    {{ form.curso_relacao }}
+                </div>     
+
+            </div>
+
+
+            <div class="row_five">
+                <button>
+                    <input class="text_border" type="submit" id="input"value="Alterar Dados">
+                </button>
+            </div>
+        </form>
+        
+{% endblock %}

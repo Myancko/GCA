@@ -1,0 +1,175 @@
+.main
+{
+    background-color: #191919;
+    /* height: 100vh; */
+    min-height: 100vh;
+    max-height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main p
+{
+
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 32px;
+}
+.username, .curso_relacao
+{
+    width: 700px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.curso_relacao, .disciplina_relacao
+{
+    width: 705px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.matricula,  .cpf, .phone, .email, .data_de_nascimento, .password1, .password2
+{
+    width: 341px;
+    height: 66px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.supossed_image img
+{
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.row_image
+{
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 340px;
+    overflow: hidden;
+}
+
+.row_one
+{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 32.5px;
+    justify-content: center;
+    flex-direction: column;
+}
+input[type=file]
+{
+    width: 195px;
+}
+.label_checkbox
+{
+    color: white;
+    font-size: 12px;
+}
+.row_two
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.row_two_2
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.row_three
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 19px;
+}
+.row_four
+{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 19px;
+}
+.row_five
+{
+    display: flex;
+    
+    justify-content: center;
+    margin-top: 30px;
+    gap: 19px;
+    
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.row_five button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #FFD700;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]
+{
+    border: none;
+    background-color: #FFD700;
+    color: white;
+    font-weight: 900;
+    font-size: 20;
+}
+.erros
+{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.erros li
+{
+    color: red;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.erros ul
+{
+    float: right;
+}
+.titulo
+{
+    margin-top: 30px;
+    
+    text-align: center;
+}
+.matricula_fix p, .username_fix p, .cpf_fix p, .email_fix p, .data_fix p, .telefone_fix p, .curso_fix p
+{
+    font-size: 16px;
+}
+.text_border
+{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

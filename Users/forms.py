@@ -80,10 +80,44 @@ class CustomUserCreateForm(UserCreationForm):
             return user
 
 class CustomUserChangeForm(UserChangeForm):
+    error_messages = {
+        'password_mismatch': 'Type smtn here!',
+    }
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'phone', 'first_name', 'last_name')
+        fields = ('image','matricula','username' , 'email' ,'cpf', 'phone', 'data_de_nascimento','curso_relacao','disciplina_relacao')
+        
+    def __init__  (self, *args, **kargs):
+        self.error_messages['password_mismatch'] = 'Type smtn here!'
+        super().__init__(*args, **kargs)
+        
+        self.fields['image'].label =  ''
+        self.fields['image'].widget.attrs.update({'class': 'image', 'placeholder': 'Image' })
+        
+        self.fields['matricula'].label =  ''
+        self.fields['matricula'].widget.attrs.update({'class': 'matricula', 'placeholder': 'Matricula', 'readonly':'readonly' })
+    
+        self.fields['username'].label =  ''
+        self.fields['username'].widget.attrs.update({'class': 'username', 'placeholder': 'Nome' })
+        
+        self.fields['email'].label =  ''
+        self.fields['email'].widget.attrs.update({'class': 'email', 'placeholder': 'E-mail' })
+        
+        self.fields['cpf'].label =  ''
+        self.fields['cpf'].widget.attrs.update({'class': 'cpf', 'placeholder': 'CPF' })
+        
+        self.fields['phone'].label =  ''
+        self.fields['phone'].widget.attrs.update({'class': 'phone', 'placeholder': 'Telefone' }) 
+        
+        self.fields['data_de_nascimento'].label =  ''
+        self.fields['data_de_nascimento'].widget.attrs.update({'class': 'data_de_nascimento', 'placeholder': 'data_de_nascimento > MM/DD/AAAA' })   
+        
+        self.fields['curso_relacao'].label =  'Curso a Coordenar'
+        self.fields['curso_relacao'].widget.attrs.update({'class': 'curso_relacao', 'placeholder': 'curso' })      
+        
+        self.fields['disciplina_relacao'].label =  'Disciplinas a Lecionar'
+        self.fields['disciplina_relacao'].widget.attrs.update({'class': 'disciplina_relacao', 'placeholder': 'disciplina' })  
         
 
    

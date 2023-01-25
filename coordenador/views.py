@@ -21,33 +21,51 @@ def home_professor (request):
         requisicoes_de_aproveitamento = Aproveitamento_de_disciplina.objects.all()
         requisicoes_de_certificacao = Certificação_de_conhecimento.objects.all()
 
+        print('coordenador de', professor_curso_name)
         lista_de_disciplinas_curso = set()
-        lista_de_disciplinas_curso2 = set()
+        aluno = []
+        aluno_do_curso = set()
+        aluno_do_disciplina = set()
 
         for dados in requisicoes_de_aproveitamento:
-            print(dados, dados.disciplina.id, '<<')
-            lista_de_disciplinas_curso.add(dados.disciplina.id)
+            print(dados, dados.disciplina.id,  dados.requisitor, '<<')
+            if professor_curso_name == dados.requisitor.curso_relacao:
+                print(dados, dados.disciplina.id,  dados.requisitor,  dados.requisitor.disciplina_relacao, '<<' 'acho')
+                aluno_do_curso.add(dados.requisitor)
+
+        for disciplnas in professor_curso_disciplinas.all():
+            print(disciplnas, disciplnas.id, '<')
+            lista_de_disciplinas_curso.add(disciplnas.id)
+
+
+        for dados in aluno_do_curso:
+            print(dados, ',,,,,')
+
+        requisicoes_de_aproveitamento = Aproveitamento_de_disciplina.objects.filter (Q(requisitor__in = aluno_do_curso))
+        
+        requisicoes_de_certificacao = Certificação_de_conhecimento.objects.all()
+
+        print('coordenador de', professor_curso_name)
+        lista_de_disciplinas_curso = set()
+        aluno = []
+        aluno_do_curso = set()
+        aluno_do_disciplina = set()
 
         for dados in requisicoes_de_certificacao:
-            print(dados, dados.disciplina.id, '<<')
-            lista_de_disciplinas_curso2.add(dados.disciplina.id)
-            
+            print(dados, dados.disciplina.id,  dados.requisitor, '<<')
+            if professor_curso_name == dados.requisitor.curso_relacao:
+                print(dados, dados.disciplina.id,  dados.requisitor,  dados.requisitor.disciplina_relacao, '<<' 'acho')
+                aluno_do_curso.add(dados.requisitor)
+
         for disciplnas in professor_curso_disciplinas.all():
-
             print(disciplnas, disciplnas.id, '<')
+            lista_de_disciplinas_curso.add(disciplnas.id)
 
 
-        requisicoes_de_aproveitamento = professor_curso_disciplinas.filter(id__in = lista_de_disciplinas_curso)
-        requisicoes_de_certificacao = professor_curso_disciplinas.filter(id__in = lista_de_disciplinas_curso2)
-        
-        print(requisicoes_de_aproveitamento,'<<<<<')
-        print(requisicoes_de_certificacao,'<<<<<')
+        for dados in aluno_do_curso:
+            print(dados, ',,,,,')
 
-        print(professor.id)
-        print(professor_curso_name)
-        print(professor_curso_disciplinas)
-
-        print(requisicoes_de_aproveitamento,'<<')
+        requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
 
         return render(request, 'home_professor.html', { 'total_aproveitamentos': len(requisicoes_de_aproveitamento),
                                                         'aproveitamento': requisicoes_de_aproveitamento,

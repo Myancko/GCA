@@ -11,7 +11,9 @@ from .views import  home_view,\
                     lista_Disciplinas,\
                     lista_Aluno,\
                     lista_Professors,\
-                    diciplina_especifica
+                    diciplina_especifica,\
+                    aluno_especifico,\
+                    professor_especifico
 
 urlpatterns = [
 
@@ -30,6 +32,8 @@ urlpatterns = [
     path('adm/list_coordinator/',  lista_Professors, name = 'lista_professor'),
     
     path('adm/disciplina/<int:id>', diciplina_especifica, name = 'disciplina'),
+    path('adm/aluno/<int:id>', aluno_especifico, name = 'aluno'),
+    path('adm/professor/', professor_especifico, name = 'professor'),
     
     path('adm/teste',  teste_view, name = 'teste'),
 ]

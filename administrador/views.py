@@ -17,6 +17,8 @@ from .form import Form_disciplina, Form_Curso
 from Users import forms
 from .models import Disciplina, Curso
 
+from Users.forms import CustomUserCreateForm,  CustomUserChangeForm
+
 from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
@@ -228,3 +230,24 @@ def diciplina_especifica (request, id):
     
     return render (request, 'subject.html', {'disciplina': disciplina,
                                              'disciplina_dependencias':m2m})
+    
+def aluno_especifico (request, id):
+    
+    aluno = User.objects.get(id=id)
+    
+    print(type(aluno.image),' <<<<<<<<<<<<<<<<<')
+   
+    
+    form = CustomUserChangeForm(request.POST or None, request.FILES or None, instance = aluno)
+    
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('lista_Aluno'))
+    
+    return render (request, 'student.html', {'form':form,
+                                             'aluno':aluno})
+
+def professor_especifico (request):
+    
+    
+    return render (request, 'teacher.html', {})

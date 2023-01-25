@@ -42,6 +42,14 @@ form
     flex-wrap: wrap;
     justify-content: center;
 }
+.carga_horaria_optativa
+{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .carga_horaria_optativa input[type=number]
 {
     width: 331px;
@@ -52,67 +60,38 @@ form
     flex-wrap: wrap;
     align-items: center;
 }
-.carga_horaria_optativa
-{
-    display: flex;
-
-    flex-wrap: wrap;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
 .radio_title
 {
     color: white;
+    width: 331px;
+    height: 66px;
 }
 .radio_title p
 {
-    margin-top: 24px;
+    margin-top: 12px;
     padding-left: 20px;
 }
-.radios
+#radios
 {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    width: 331px;
+    height: 37px;
 
 }
-.radios
+#radios div
+{
+    display: flex;
+    gap: 20px;
+}
+#radios div label
 {
 
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-
     gap: 5px;
 }
-.radios ul
-{
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: center;
-}
-.radios ul li
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-     width: 161px;
-    height: 66px;
-    gap: 5px;
-}
-.radios ul li label
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
 .dependencias
 {
     display: flex;
@@ -140,8 +119,8 @@ input[type=submit]
 }
 input[type=radio]
 {
-    width: 30px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     
 }
 input[type=text], input[type=number], input[type=submit]
