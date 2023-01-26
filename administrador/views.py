@@ -18,6 +18,8 @@ from Users import forms
 from .models import Disciplina, Curso
 
 from Users.forms import CustomUserCreateForm,  CustomUserChangeForm
+import random
+from django.core.mail import send_mail
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -96,13 +98,28 @@ class SignUpView_Student(CreateView):
     success_url = reverse_lazy('home')
     template_name = 'sign_up_student.html'
     model = CustomUser
+    
+    def get(self, request, *args, **kwargs):
+        
+        x = random.randint(0,100000)
+        y = random.randint(0,100000)
+        senha_temporaria = 'Pew' + str(x) + str(y)
+
+        self.extra_context= {'senha': senha_temporaria}
+        return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        print(form)
         response = super().form_valid(form)
 
         student_group = Group.objects.get(name='Aluno')
         self.object.groups.add(student_group)
 
+        matricula = form.cleaned_data['matricula']
+        senha = form.cleaned_data['password2']
+        email = form.cleaned_data['email']
+
+        res = send_mail('Sua matricula é:',matricula,'\nSua senha é:',senha, [weptpear394@gmail.com])
         messages.success(self.request, "Usuário cadastrado com sucesso!")
         return response
 

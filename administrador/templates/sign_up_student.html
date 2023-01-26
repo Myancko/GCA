@@ -10,7 +10,7 @@
 {% block main %}
 <div class="main">
     
-    <p>Cadastro de Aluno</p>
+    <p>Cadastro de Aluno {{senha}}</p>
     {{ form.errors }}
     <div class="cadastro">
         <form action="" method="post" enctype='multipart/form-data'>
@@ -59,9 +59,10 @@
             </div>
 
             <div class="row_four">
-
-                {{form.password1}}
-                {{form.password2}}
+                <input style="visibility: hidden; position: absolute;" type="password" name="password1" autocomplete="new-password" class="password1" placeholder="Senha" required="" id="id_password1" value="{{senha}}">
+                <input style="visibility: hidden; position: absolute;" type="password" name="password2" autocomplete="new-password" class="password2" placeholder="Confirme a Senha" required="" id="id_password2" value="{{senha}}">
+<!--                 {{form.password1}}
+                {{form.password2}} -->
   
             </div>
 
