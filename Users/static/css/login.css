@@ -32,7 +32,7 @@ label
     width: 341px;
     color: white;
     text-align: center;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     font-weight: 500;
 }
 
@@ -50,6 +50,7 @@ label
     border-radius: 5px;
     outline: none;
     margin-bottom: 10px;
+    font-size: 21px;
 }
 .logar
 {
@@ -77,4 +78,11 @@ label
 .logar
 {
     cursor: pointer;
+}
+.wellcum
+{
+    color: white;
+    padding: 2%;
+    font-size: 21px;
+    font-weight: 500;
 }

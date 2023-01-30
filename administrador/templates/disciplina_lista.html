@@ -65,7 +65,7 @@
                     {% for dados in disciplina %}
                         <tr>
                             <th scope="row"> {{dados.id}} </th>
-                            <td><a class="name" href="{% url 'disciplina' dados.id %}">{{dados.nome}} </a></td>
+                            <td><a class="" href="{% url 'disciplina' dados.id %}">{{dados.nome}} </a></td>
                             <td>{{dados.perido}}</td>
                             <td>
                                 {% for dependencias in dados.dependencia.all %}

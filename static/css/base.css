@@ -7,21 +7,6 @@
     font-family: inter;
     text-decoration: none;
 }
-.slogan a
-{
-    text-decoration: none;
-    color: white;
-}
-.slogan a:hover
-{
-    color: #FFD700;
-    transition: 1s;
-}
-.slogan :not(:hover) 
-{
-    transition: 1s;
-    color: white;
-}
 a
 {
     text-decoration: none;
@@ -46,8 +31,16 @@ a
     font-weight: bolder;
     cursor: pointer;
 }
-.slogan_link
+.gear
 {
+    width: 60px;
+    height: max-content;
+    margin-right: 1%;
+    cursor: pointer;
+}
+.slogan a
+{
+    text-decoration: none;
     color: white;
 }
 .slogan a:hover
@@ -55,10 +48,7 @@ a
     color: #FFD700;
     transition: 1s;
 }
-.gear
+.slogan :not(:hover) 
 {
-    width: 60px;
-    height: max-content;
-    margin-right: 1%;
-    cursor: pointer;
+    color: white;
 }
