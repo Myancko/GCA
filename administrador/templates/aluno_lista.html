@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.admin.html' %}
 {% load static %}
 
 {% block import_title_css %}
@@ -11,14 +11,14 @@
 <div class="main">
 
     <div class="search_box">
-        <form action=""  method="post">
+        <form action=""  method="">
             <div>
                 <label for="search_box">Buscar Aluno</label>
             </div>
             <div class="search_bar">
-                <input type="text" id="search_box" name="search_box" placeholder="Digite a Matricula...">
+                <input type="" id="search_box" name="search_box" placeholder="Digite o Nome do Aluno...">
 
-                <button class="enviar_botao" type="submit">
+                <button class="enviar_botao">
                     <img class="lupa" src="{% static 'icons/search_thing.svg' %}" alt="">
                 </button>
                 
@@ -79,4 +79,26 @@
     </div>
  
 </div>
+{% endblock %}
+
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+    $(() => {
+        const search = $("#search_box")
+        const tbody = $("tbody").html()
+    
+        $("#search_box").keyup(() => {
+            let text = search.val()
+            if (text.length === 0) {
+                $("tbody").replaceWith("<tbody>" + tbody + "</tbody>")
+            } else {
+                $.get(`/adm/list_students_ajax/${text}`, (data) => {
+                    $("tbody").replaceWith(data)
+                })
+            }
+        })
+    })
+</script>
 {% endblock %}

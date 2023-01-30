@@ -1,0 +1,13 @@
+<tbody>
+    {% for dados in aluno %}
+        <tr>
+
+            <th scope="row"> {{dados.id}} </th>
+            <td><a href="{% url 'aluno' dados.id %}">{{dados.username}}</a></td>
+            <td>{{dados.matricula}}</td>
+            <td class="curso_width">{{dados.curso_relacao}}</td>
+            <td class="cpf_width">{{dados.cpf}}</td>
+            
+        </tr>
+    {% endfor %}
+</tbody>    

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.admin.html' %}
 {% load static %}
 
 {% block import_title_css %}
@@ -8,17 +8,48 @@
 
 
 {% block main %}
+   <!--  {{form.as_p}} -->
+    <form action="" method="post" enctype='multipart/form-data'>
+        {%csrf_token%}
+        <!-- {{form.errors}} -->
+        <div class="main">
+            <p class="titulo">Disciplina - {{disciplina.nome}}</p>
+        
 
-    <p>{{disciplina}}</p>
+            <div class="nome">
+                <p>Nome</p>
+                {{ form.nome }}
+                <div  class="color_red">{{ form.nome.errors }}</div>
+            </div>
 
-   <p>{{disciplina.nome}}</p>
-   <p>{{disciplina.perido}}</p>
-   <p>{{disciplina.carga_horaria}}</p>
-   <p>{{disciplina.optativa}}</p>
-   <p>{{disciplina_dependencias}}</p>
-   {% for dados in disciplina_dependencias%}
-   <p>{{dados}}</p>
-   {% endfor %}
-   
+            <div class="periodos">
+                <p>Periodo da Disciplina</p>
+                {{ form.perido }}
+                <div  class="color_red">{{ form.perido.errors }}</div>
+            </div>
+
+            <div class="data">
+                <p>Carga horaria</p>
+                {{ form.carga_horaria }}
+                <div  class="color_red">{{ form.carga_horaria.errors }}</div>
+            </div>
+
+            <div class="diciplinas">
+                <p>Optativa</p>
+                {{ form.optativa }}
+                <div  class="color_red">{{ form.optativa.errors }}</div>
+            </div>
+
+            <div class="diciplinas">
+                <p>Dependencia de outras disciplinas</p>
+                {{ form.dependencia }}
+                <div  class="color_red">{{ form.dependencia.errors }}</div>
+            </div>
+
+            <div class="submit">
+                <button class="btn_submit"><input class="text_border" type="submit" id="input"value="Alterar Dados"></button>
+            </div>
+        </div>
+    </form>
 
 {% endblock %}

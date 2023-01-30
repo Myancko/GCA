@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.admin.html' %}
 {% load static %}
 
 {% block import_title_css %}
@@ -10,8 +10,8 @@
 {% block main %}
 <div class="main">
     
-    <p>Cadastro de Aluno {{senha}}</p>
-    {{ form.errors }}
+    <p class="titulo">Cadastro de Aluno</p>
+    <!-- {{ form.errors }} -->
     <div class="cadastro">
         <form action="" method="post" enctype='multipart/form-data'>
             {%csrf_token%}
@@ -19,8 +19,9 @@
             <div class="row_one">
 
                 <div class="supossed_image">
-
+                    <img id="blah" src="#" alt="your image" />
                 </div>
+                
 
                 <div class="row_image">
                     <div>
@@ -30,31 +31,72 @@
                         <input type="checkbox" id="ynimagem" name="ynimagem"> 
                         <label  class='label_checkbox'for="ynimagem">Não escolher uma foto</label>
                     </div>
-                    {{form.image}}
-                    
+                    <input type="file" name="image" accept="image/*" class="image" placeholder="Image" id="id_image">
+                    <!-- {{form.image}} -->
+                    <div style="width: 10px; height: 15px; overflow: hidden">{{form.matricula.errors}}</div>
                 </div>
-
-                {{form.matricula}}
+                <div>
+                <div>
+                    <p class="labels">Matricula</p>
+                    {{form.matricula}}
+                </div>
+                <div class="text_red">{{form.matricula.errors}}</div>
+                </div>
                 
             </div>
 
             <div class="row_two">
-
-                {{ form.username }}
+                <div>
+                    <p class="labels">Nome de usuario</p>
+                    {{ form.username }}
+                </div>
+                
+                <div class="text_red">{{form.username.errors}}</div>
                 
             </div>
 
             <div class="row_three">
 
-                {{form.cpf}}
-                {{form.email}}
+                <div> 
+                    <div>
+                        <p class="labels">CPF</p>
+                        {{form.cpf}}
+                    </div>
+                    
+                    <div class="text_red">{{form.cpf.errors}}</div>
+                </div>
+
+                <div>
+                    <div>
+                        <p class="labels">Email</p>
+                        {{form.email}}
+                    </div>
+                    <div class="text_red">{{form.email.errors}}</div>
+                </div>
+                
                 
             </div>
 
             <div class="row_four">
 
-                {{form.data_de_nascimento}}
-                {{form.phone}}
+                <div>
+                    <div>
+                        <p class="labels">Data de nascimento</p>
+                        {{form.data_de_nascimento}}
+                    </div>
+                    
+                    <div class="text_red">{{form.data_de_nascimento.errors}}</div>
+                </div>
+                
+                <div>
+                    <div>
+                        <p class="labels">Telefone</p>
+                        {{form.phone}}
+                    </div>
+                    
+                    <div class="text_red">{{form.phone.errors}}</div>
+                </div>
+                
   
             </div>
 
@@ -66,19 +108,42 @@
   
             </div>
 
-            <div class="row_two">
-
-                {{ form.curso_relacao }}
+            <div class="row_two_">
+                <div>
+                    <p class="labels">Curso</p>
+                    {{ form.curso_relacao }}
+                </div>
+                <div class="text_red">{{ form.curso_relacao.errors }}</div>
                 
             </div>
 
 
             <div class="row_five">
                 <button>
-                    <label for="input"><img src="{% static 'icons/out.svg'%}" alt=""></label>
+                    <label for="input"><img class="confia" src="{% static 'icons/out.svg'%}" alt=""></label>
                     <input type="submit" id="input"value="Cadastrar">
                 </button>
             </div>
         </form>
         
+{% endblock %}
+
+{% block js%}
+<script>
+
+    document.getElementById('id_password1').value="{{senha}}"
+    document.getElementById('id_password2').value="{{senha}}"
+
+    id_image.onchange = evt => {
+        const [file] = id_image.files
+        if (file) {
+          document.getElementById("blah").style.display = 'block';
+          blah.src = URL.createObjectURL(file)
+        }
+      }
+
+</script>
+
+    
+
 {% endblock %}

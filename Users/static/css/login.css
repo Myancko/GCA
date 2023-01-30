@@ -29,15 +29,19 @@ label
 }
 .boas_vindas
 {
+    width: 341px;
     color: white;
+    text-align: center;
+    margin-bottom: 1%;
+    font-weight: 500;
 }
 
 .form
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;align-items: center;
-    gap: 2%;
+    justify-content: center;
+    align-items: center;
 }
 .form input
 {
@@ -45,6 +49,7 @@ label
     height: 63px;
     border-radius: 5px;
     outline: none;
+    margin-bottom: 10px;
 }
 .logar
 {
@@ -57,8 +62,8 @@ label
     font-size: 20px;
     font-weight: 800;
     outline: none;
-    margin-top: 37px;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

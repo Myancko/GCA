@@ -1,4 +1,8 @@
 from django.http import HttpResponseRedirect
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.views import PasswordChangeView 
+from django.urls import reverse, reverse_lazy
+from Users.forms import CustomUserCreateForm,  CustomUserChangeForm,  PasswordChangeForm
 from django.shortcuts import render
 from django.urls import reverse
 from administrador.models import Curso, Disciplina
@@ -6,6 +10,7 @@ from Aluno.models import Aproveitamento_de_disciplina, Certificação_de_conheci
 from django.contrib.auth import get_user_model
 from Aluno.form import Form_aproveitamento_de_disciplina, Form_certificação_de_conhecimento
 from django.db.models import Q
+from django.shortcuts import redirect
 
 User = get_user_model()
 
@@ -14,6 +19,12 @@ User = get_user_model()
 def home_professor (request):
     
     try:
+        
+        if request.user.primeiro_login == True:
+        
+            primeiro_login = redirect ('/Coordenador/professor_home/alterar_senha/', {})
+            return primeiro_login
+        
         coordenador = True
         professor = User.objects.get(id=request.user.id)
         professor_curso_name = professor.curso_relacao
@@ -173,3 +184,46 @@ def certificacao (request, certificacao_id):
     print(requisitor)
     return render(request, 'certificacao.html' , {'certificacao': certificacao,
                                                     'form' : form})
+    
+class password_change(PasswordChangeView):
+    template_name='registration/password_change.html'
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('home')
+    
+    
+    def get(self, request, *args, **kwargs):
+        
+        user = request.user
+        self.extra_context= {'user': user}
+        
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        
+        user = request.user
+        self.extra_context= {'user': user}
+        
+        return super().post(request, *args, **kwargs)
+    
+    
+    def form_valid(self, form):
+        form.save()
+        user = self.request.user
+        usuario = User.objects.filter(Q(id=user.id)).update(primeiro_login=False)
+        
+        try:
+           for dados in usuario:
+                dados.save()
+        except:
+            print(usuario)
+            usuario 
+            return redirect('http://127.0.0.1:8000/user/logout')            
+            print('gg ;-;')
+            
+        # Updating the password logs out all other sessions for the user
+        # except the current one.
+        print(user.primeiro_login,'<<<<<<<<<<form')
+        update_session_auth_hash(self.request, form.user)
+        
+        return super().form_valid(form)
+ 

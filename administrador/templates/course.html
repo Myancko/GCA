@@ -1,0 +1,66 @@
+{% extends 'base.admin.html' %}
+{% load static %}
+
+{% block import_title_css %}
+    <title>Aluno</title>
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+{% endblock %}
+
+
+{% block main %}
+   <!--  {{form.as_p}} -->
+    <form action="" method="post" enctype='multipart/form-data'>
+        {%csrf_token%}
+        <!-- {{form.errors}} -->
+        <div class="main">
+            <p class="titulo">Curso - {{curso.nome}}</p>
+        
+
+            <div class="nome">
+                <p>Nome</p>
+                {{ form.nome }}
+                <div  class="color_red">{{ form.nome.errors }}</div>
+            </div>
+
+            <div class="periodos">
+                <p>Total de peridos</p>
+                {{ form.periodos }}
+                <div  class="color_red">{{ form.periodos.errors }}</div>
+            </div>
+
+            <div class="data">
+                <p>Ano do Curso</p>
+                {{ form.ano }}
+                <div  class="color_red">{{ form.ano.errors }}</div>
+            </div>
+
+            <div class="diciplinas">
+                <p>Disciplinas</p>
+                {{ form.disciplina }}
+                <div  class="color_red">{{ form.disciplina.errors }}</div>
+            </div>
+
+            <div class="coordenador">
+                <p>Coordenador</p>
+                <select name="coordenador" class="coordenador" placeholder="Coordenador do Curso" required="" id="id_coordenador">
+
+                    {% for professor in grupo_professor %}
+
+                        {% if professor.id == curso.coordenador.id %}
+                            <option value="{{professor.id}}" selected>{{professor.username}}</option>
+                        {% elif professor.curso_relacao == None %}
+                            <option value="{{professor.id}}">{{professor.username}}</option>
+                        {% endif %}
+                        
+                    {% endfor %}
+                
+                  </select>
+                <div  class="color_red">{{ form.coordenador.errors }}</div>
+            </div>
+
+            <div class="submit">
+                <button class="btn_submit"><input class="text_border" type="submit" id="input"value="Alterar Dados"></button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

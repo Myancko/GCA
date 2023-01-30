@@ -7,9 +7,9 @@ from .views import  home_aluno,\
                     aluno_curso,\
                     modal_selecionarAC,\
                     modal_menu,\
+                    password_change,\
                         requisitar_aproveitamento_de_disciplina,\
-                        requisitar_certificacao_de_conhecimento,\
-                    requisitar_certificacao_de_conhecimento_class
+                        requisitar_certificacao_de_conhecimento_class
                         
 
 
@@ -20,12 +20,14 @@ urlpatterns = [
 
 
     path('aluno_home/',  home_aluno, name = 'sweet_home'),
+    path('aluno_home/alterar_senha/',  password_change.as_view(), name = 'student_change_password'),
     path('aluno_curso/<int:curso_id>', aluno_curso, name = 'curso_aluno'),
     
     #path('requisitar_aproveitamento_de_disciplina/<int:disciplina_id>', requisitar_aproveitamento_de_disciplina_class.as_view(), name='r_aproveitamento'),
     path('requisitar_aproveitamento_de_disciplina/<int:disciplina_id>',  requisitar_aproveitamento_de_disciplina, name='r_aproveitamento'),
     #path('requisitar_certificacao_de_conhecimento/<int:disciplina_id>',  requisitar_certificacao_de_conhecimento, name='r_certificacao'),
     path('requisitar_certificacao_de_conhecimento/<int:disciplina_id>',  requisitar_certificacao_de_conhecimento_class.as_view(), name='r_certificacao'),
+    
     path('teste/modais', modal_selecionarAC, name = 'modal'),
     path('teste/modal_menu', modal_menu, name = 'modal_menu'),
     

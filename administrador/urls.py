@@ -13,7 +13,13 @@ from .views import  home_view,\
                     lista_Professors,\
                     diciplina_especifica,\
                     aluno_especifico,\
-                    professor_especifico
+                    professor_especifico,\
+                    curso_especifico,\
+                    search_aluno,\
+                    search_professor,\
+                    search_curso,\
+                    search_disciplina,\
+                    CONFIG
 
 urlpatterns = [
 
@@ -33,7 +39,15 @@ urlpatterns = [
     
     path('adm/disciplina/<int:id>', diciplina_especifica, name = 'disciplina'),
     path('adm/aluno/<int:id>', aluno_especifico, name = 'aluno'),
-    path('adm/professor/', professor_especifico, name = 'professor'),
+    path('adm/professor/<int:id>', professor_especifico, name = 'professor'),
+    path('adm/curso/<int:id>', curso_especifico, name = 'curso'),
+    path('adm/professor/<int:id>', professor_especifico, name = 'professor'),
     
+    path('adm/list_students_ajax/<str:text>', search_aluno, name='ajax_lista_aluno' ),
+    path('adm/list_teacher_ajax/<str:text>', search_professor, name='ajax_lista_professor' ),
+    path('adm/list_course_ajax/<str:text>', search_curso, name='ajax_lista_curso' ),
+    path('adm/list_subject_ajax/<str:text>', search_disciplina, name='ajax_lista_disciplina' ),
+    
+    path('CONFIG/<int:id>', CONFIG, name = 'CONFIG'),
     path('adm/teste',  teste_view, name = 'teste'),
 ]

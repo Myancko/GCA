@@ -2,10 +2,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth import update_session_auth_hash
 from administrador.models import Curso, Disciplina
 from django.contrib import messages
-from  .form import Form_aproveitamento_de_disciplina,Form_certificação_de_conhecimento 
+from Users.forms import CustomUserCreateForm,  CustomUserChangeForm,  PasswordChangeForm
+from .form import Form_aproveitamento_de_disciplina,Form_certificação_de_conhecimento
 from .models import Aproveitamento_de_disciplina, Certificação_de_conhecimento
+from django.contrib.auth.views import PasswordChangeView 
+#from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import redirect
+from django.db.models import Q
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 from django.views.generic.edit import CreateView
 # Create your views here.
@@ -19,6 +28,12 @@ def home_aluno (request):
     except:
         aluno_curso = None
 
+    print('primeiro_login =',aluno.primeiro_login, '<<<<<<<')
+    
+    if aluno.primeiro_login == True:
+        
+        primeiro_login = redirect ('/Aluno/aluno_home/alterar_senha/', {})
+        return primeiro_login
     
     x = request.user.image.url
     print(request.user.image.url, '<<<<<<<<')
@@ -62,6 +77,49 @@ def aluno_curso (request, curso_id):
                                                        'total_de_optativas': len_optativas,
                                                        'total_de_nao_optativas' : len_nao_opttivas})
     
+class password_change(PasswordChangeView):
+    template_name='registration/password_change.html'
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('home')
+    
+    
+    def get(self, request, *args, **kwargs):
+        
+        user = request.user
+        self.extra_context= {'user': user}
+        
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        
+        user = request.user
+        self.extra_context= {'user': user}
+        
+        return super().post(request, *args, **kwargs)
+    
+    
+    def form_valid(self, form):
+        form.save()
+        user = self.request.user
+        usuario = User.objects.filter(Q(id=user.id)).update(primeiro_login=False)
+        
+        try:
+           for dados in usuario:
+                dados.save()
+        except:
+            print(usuario)
+            usuario 
+            return redirect('http://127.0.0.1:8000/user/logout')            
+            print('gg ;-;')
+            
+        # Updating the password logs out all other sessions for the user
+        # except the current one.
+        print(user.primeiro_login,'<<<<<<<<<<form')
+        update_session_auth_hash(self.request, form.user)
+        
+        return super().form_valid(form)
+    
+ 
 def modal_selecionarAC (request):
     
     return render (request, 'modais/teste.html', {})
@@ -69,20 +127,6 @@ def modal_selecionarAC (request):
 def modal_menu (request):
     
     return render (request, 'modais/modal_menu.html', {})
-
-""" class requisitar_aproveitamento_de_disciplina_class(CreateView):
-    form_class  = Form_aproveitamento_de_disciplina
-    success_url = reverse_lazy('sweet_home')
-    template_name = 'requisitar_aproveitamento_de_disciplina.html'
-    model = Aproveitamento_de_disciplina
-    
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-         form.save_m2m() 
-        
-        messages.success(self.request, "Requisição realizada com sucesso")
-        return response """
         
 def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
     
@@ -131,8 +175,3 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
         self.extra_context= {'disciplina': disciplina_requisição}
         return super().get(request, *args, **kwargs)
     
-
-
-def requisitar_certificacao_de_conhecimento (request, disciplina_id):
-    
-    return render (request, 'requisitar_certificação_de_conhecimento.html', {})

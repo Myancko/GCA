@@ -1,0 +1,17 @@
+<tbody>
+    {% for dados in curso %}
+        <tr>
+            <th scope="row"> {{dados.id}} </th>
+            <td><a href="{% url 'curso' dados.id %}">{{dados.nome}}</a></td>
+            <td>{{dados.ano}}</td>
+            <td>{{dados.coordenador}}</td>
+            <td>
+                {% for disciplina in dados.disciplina.all %}
+                    {{disciplina}},
+                {% endfor %}
+
+            </td>
+            <td>{{dados.periodos}}</td>
+        </tr>
+    {% endfor %}
+</tbody>

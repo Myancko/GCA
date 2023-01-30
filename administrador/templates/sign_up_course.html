@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.admin.html' %}
 {% load static %}
 
 {% block import_title_css %}
@@ -10,16 +10,24 @@
 
 <div class="main">
     
-    <p>Cadastro - Curso</p>
-    {{ form.errors }}
+    <p class="title">Cadastro - Curso</p>
+    <!-- {{ form.errors }} -->
     <form action="" method="post">
         
         {% csrf_token %}
 
         <div class="name_perido">
-            
-            {{ form.nome }}
-            {{ form.periodos }}
+            <div>
+                <p class="label_p">Nome</p>
+                {{ form.nome }}
+                <p class="color_red"> {{ form.nome.errors }} </p>
+            </div>
+
+            <div>
+                <p class="label_p">Total de Peridodos</p>
+                {{ form.periodos }}
+                <p class="color_red"> {{ form.periodos.errors }} </p>
+            </div>
 
         </div>
 
@@ -27,13 +35,28 @@
             <div class="disciplina">
                 <label for=""> {{ form.disciplina.label }} </label>
                 {{ form.disciplina }}
+                <p class="color_red"> {{ form.disciplina.errors }} </p>
             </div>
 
             <div>
             
                 <div class="coordenador">
                     <label for="coordenador">{{ form.coordenador.label }}</label>
-                    {{ form.coordenador }}
+
+                    <select name="coordenador" class="coordenador" placeholder="Coordenador do Curso" required="" id="id_coordenador">
+                        <option value="" selected="">---------</option>
+                      
+                        {% for teacher in prof%}
+                            
+                            {% if teacher.curso_relacao.nome == None %}
+                                <option value="{{ teacher.id }}">{{ teacher.username }}</option>
+                            {% endif %}
+                        {% endfor %}
+                      
+                      </select>
+
+                    <p class="color_red">{{ form.coordenador.errors }}</p>
+                    <!-- {{ form.coordenador }} -->
                 </div>
     
             </div>
@@ -43,15 +66,18 @@
         <div class="name_perido_ano">
             
             <div class="disciplina">
-                <label for=""> {{ form.ano.label }} </label>
+                <p class="label_p">Ano</p>
                 {{ form.ano }}
+                <p class="color_red">{{ form.ano.errors }}</p>
             </div>
 
         </div>
 
 
-        <div class="funfa" type="submit">
-            <input id="submit" type="submit" value="Cadastrar Curso">
+        <div class="row_five">
+            <button>
+                <input type="submit" id="input"value="Cadastrar Curso">
+            </button>
         </div>
 
     </form>

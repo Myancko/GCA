@@ -6,10 +6,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+    gap: 10px;
 }
-.main p
-
+.title
 {
     color: white;
     font-size: 32px;
@@ -17,6 +16,7 @@
     margin-top: 72px;
     margin-bottom: 52px;
 }
+
 form
 {
     display: flex;
@@ -39,7 +39,6 @@ form
 .name_perido  input, .name_perido_ano input
 
 {
-    margin-top: 20px;
     width: 341px;
     height: 66px;
     border-radius: 5px;
@@ -50,6 +49,10 @@ form
     display: flex;  
     flex-direction: column;
     
+}
+.disciplina label
+{
+    margin-top: 10px;
 }
 .disciplina select
 {
@@ -66,22 +69,45 @@ form
     width: 341px;
     height: 66px;
 }
-#submit
+.row_five
 {
-    width: 341px;
-    height: 63px;
-    background-color: #FFD700;
-    color: white;
-    font-size: 20px;
-    font-weight: bolder;
-    border: none;
-    border-radius: 5px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     display: flex;
     justify-content: center;
-    
-    flex-wrap: wrap;
-    flex-direction: row;
+}
+.row_five button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #eedb75;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+input[type=submit]
+{
+    border: none;
+    background-color: #eedb75;
+
+    color: black;
+    font-weight: 900;
+    font-size: 20;
+}
+.row_five button:hover ,.row_five button:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+.row_five button:not(:hover) ,.row_five button:not(:hover) input[type=submit]
+{
+    background-color: #eedb75;
+    transition: 1s;
 }
 .dual_label
 {
@@ -102,8 +128,8 @@ form
 label
 {
     color: white;
-    font-size: 15px;
-    margin-top: 20px;
+    font-size: 16px;
+
 }
 .erros
 {
@@ -131,4 +157,15 @@ label
     justify-content: center;
     flex-wrap: wrap;
 }
+}
+.label_p
+{
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+}
+
+.errorlist
+{
+    color: red;
 }

@@ -81,6 +81,7 @@ class CustomUser(AbstractUser):
     cpf = models.CharField("CPF", max_length=14, unique=True)
     phone = models.CharField("Telefone", max_length=15, blank=True, null=True)
     data_de_nascimento = models.DateField('Data de Nascimento', blank=True, null=True)
+    primeiro_login = models.BooleanField(default=True)
     
     
     curso_relacao = models.ForeignKey("administrador.Curso", verbose_name=("Curso"), blank=True, null=True,on_delete=models.SET_NULL)

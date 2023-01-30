@@ -107,6 +107,7 @@ input[type=file]
     
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 10px;
     gap: 19px;
     
 }
@@ -126,7 +127,7 @@ form{
     gap: 5px;
 
     border: none;
-    background-color: #FFD700;
+    background-color: #eedb75;
     width: 341px;
     height: 63px;
     border-radius: 5px;
@@ -136,10 +137,20 @@ form{
 input[type=submit]
 {
     border: none;
-    background-color: #FFD700;
+    background-color: #eedb75;
     color: white;
     font-weight: 900;
     font-size: 20;
+}
+.row_five button:hover ,.row_five button:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+.row_five button:not(:hover) ,.row_five button:not(:hover) input[type=submit]
+{
+    background-color: #eedb75;
+    transition: 1s;
 }
 .erros
 {
@@ -165,11 +176,22 @@ input[type=submit]
     
     text-align: center;
 }
-.matricula_fix p, .username_fix p, .cpf_fix p, .email_fix p, .data_fix p, .telefone_fix p, .curso_fix p
+.matricula_fix p, .username_fix p, .cpf_fix p, .email_fix p, .data_fix p, .telefone_fix p, .curso_fix p, .row_image p
 {
     font-size: 16px;
 }
 .text_border
 {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.color_red
+{
+    color: red;
+}
+.matricula
+{
+    background-color: #c1c1c1;
+    outline: none;
+    pointer-events: none;
+    touch-action: none;
 }

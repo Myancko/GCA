@@ -17,10 +17,14 @@
     color: #FFD700;
     transition: 1s;
 }
+.slogan :not(:hover) 
+{
+    transition: 1s;
+    color: white;
+}
 a
 {
     text-decoration: none;
-    
 }
 .header
 {

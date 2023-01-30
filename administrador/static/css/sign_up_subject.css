@@ -38,9 +38,9 @@ form
     padding-left: 10px;
     display: flex;
     flex-direction: row;
-    
     flex-wrap: wrap;
     justify-content: center;
+    border-radius: 5px;
 }
 .carga_horaria_optativa
 {
@@ -49,6 +49,7 @@ form
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 .carga_horaria_optativa input[type=number]
 {
@@ -59,6 +60,7 @@ form
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    border-radius: 5px;
 }
 .radio_title
 {
@@ -68,8 +70,7 @@ form
 }
 .radio_title p
 {
-    margin-top: 12px;
-    padding-left: 20px;
+    margin-top: 10px;
 }
 #radios
 {
@@ -77,13 +78,13 @@ form
     align-items: center;
     justify-content: center;
     width: 331px;
-    height: 37px;
+    height: 66px;
 
 }
 #radios div
 {
     display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 #radios div label
 {
@@ -103,29 +104,54 @@ form
 .dependencias label
 {
     color: white;
+    margin-top: 10px;  
+}
+.dependencias select
+{
+    border-radius: 5px;
+}
+
+.row_five button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #eedb75;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
 input[type=submit]
-{   
-    background-color: #FFD700;
-    width: 341px;
-    height: 63px;
+{
     border: none;
-    color: white;
-    font-weight: bolder;
-    font-size: 20px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    cursor: pointer;
+    background-color: #eedb75;
+
+    color: black;
+    font-weight: 900;
+    font-size: 20;
 }
+.row_five button:hover ,.row_five button:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+.row_five button:not(:hover) ,.row_five button:not(:hover) input[type=submit]
+{
+    background-color: #eedb75;
+    transition: 1s;
+}
+
 input[type=radio]
 {
     width: 20px;
     height: 20px;
     
-}
-input[type=text], input[type=number], input[type=submit]
-{
-    margin-top: 15px;
 }
 .erros
 {
@@ -144,6 +170,13 @@ input[type=text], input[type=number], input[type=submit]
 .erros ul
 {
     float: right;
+}
+
+.label_form
+{
+
+    color: white;
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 700px)

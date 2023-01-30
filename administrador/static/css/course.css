@@ -1,0 +1,74 @@
+body
+{
+    background-color: #191919;
+}
+.titulo
+{
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.main
+{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    
+}
+.nome, .periodos, .data, .diciplinas, .coordenador
+{
+    width: 80%;
+}
+.nome input, .data input, .diciplinas select, .periodos input, .coordenador select
+{
+    width: 100%; 
+}
+.nome p, .periodos p, .data p, .diciplinas p, .coordenador p
+{
+    color: white;
+}
+.submit
+{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn_submit
+{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #FFD700;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2%;
+}
+.text_border
+{
+    width: 100%;
+}
+input[type=submit]
+{
+    width: 100%;
+    border: none;
+    background-color: #FFD700;
+    color: white;
+    font-weight: 900;
+    font-size: 20;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.color_red
+{
+    color: red;
+}

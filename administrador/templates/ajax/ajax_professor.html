@@ -1,0 +1,25 @@
+<tbody>
+    {% for dados in professor %}
+        <tr>
+
+            <th scope="row"> {{dados.id}} </th>
+            <td><a href="{% url 'professor' dados.id %}">{{dados.username}}</a></td>
+            <td>{{dados.matricula}}</td>
+            <td class="curso_width">
+                {% if dados.curso_relacao == None %}
+                    Não
+                {% else %}
+                    {{dados.curso_relacao}}
+                {% endif%}
+                </td>
+            <td class="cpf_width">
+
+                {% for relacao in dados.disciplina_relacao.all %}
+                {{relacao}},
+                {% endfor %}
+
+            </td>
+            
+        </tr>
+    {% endfor %}
+</tbody>

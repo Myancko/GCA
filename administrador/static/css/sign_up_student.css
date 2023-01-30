@@ -8,13 +8,14 @@
     display: flex;
     flex-direction: column;
 }
-.main p
+.titulo
 {
-    margin-top: 30px;
-    text-align: center;
-    color: #FFFFFF;
-    font-weight: bold;
+    color: white;
     font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .username, .curso_relacao
 {
@@ -40,10 +41,23 @@
 .supossed_image
 {
     background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
     border-radius: 50000px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
+#blah
+{
+    display: none;
+    height: 100%;
+    width: 100%;
+
+}
+
 .row_image
 {
     display: flex;
@@ -59,6 +73,7 @@
 {
     margin-top: 25px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 32.5px;
     justify-content: center;
@@ -127,20 +142,35 @@ form{
     gap: 5px;
 
     border: none;
-    background-color: #FFD700;
+    background-color: #eedb75;
     width: 341px;
     height: 63px;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 25%;
 }
 
 input[type=submit]
 {
     border: none;
-    background-color: #FFD700;
-    color: white;
+    background-color: #eedb75;
+    color: black;
     font-weight: 900;
     font-size: 20;
+}
+.row_five button:hover ,.row_five button:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+.row_five button:not(:hover) ,.row_five button:not(:hover) input[type=submit]
+{
+    border: none;
+    background-color: #eedb75;
+    color: black;
+    font-weight: 900;
+    font-size: 20;
+    transition: 1s;
 }
 .erros
 {
@@ -159,4 +189,27 @@ input[type=submit]
 .erros ul
 {
     float: right;
+}
+.confia
+{
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(55deg) brightness(98%) contrast(102%);
+    margin-bottom: 2px;
+}
+.text_red
+{
+    color: red;
+}
+.labels
+{
+    color: white;
+}
+.errorlist
+{
+    margin: 0px;
+    margin-top: 5px;
+}
+.row_two_
+{
+    display: flex;
+    justify-content: center;
 }

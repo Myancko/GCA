@@ -1,0 +1,84 @@
+body
+{
+    background-color: #191919;
+}
+.warning_text
+{
+    color: red;
+    text-align: center;
+    padding-top: 2%;
+}
+.form 
+{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titulo
+{
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 32px;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+.senha_antiga, .nova_senha
+{
+    width: 80%;
+    padding: 10px;
+}
+#id_old_password, #id_new_password1, #id_new_password2
+{
+    width:100%;
+    border-radius: 5px;
+}
+.color_red
+{
+    color: red ;
+}
+.wellcum
+{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 2%;
+    font-weight: 600;
+}
+
+.row_five button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    border: none;
+    background-color: #eedb75;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+input[type=submit]
+{
+    border: none;
+    background-color: #eedb75;
+
+    color: black;
+    font-weight: 900;
+    font-size: 20;
+}
+.row_five button:hover ,.row_five button:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+.row_five button:not(:hover) ,.row_five button:not(:hover) input[type=submit]
+{
+    background-color: #eedb75;
+    transition: 1s;
+}

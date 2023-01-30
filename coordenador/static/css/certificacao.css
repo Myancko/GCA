@@ -13,6 +13,10 @@ body
     justify-content: center;
     align-items: center;
 }
+.titulo
+{
+    font-size: 32px;
+}
 .text_color_white
 {
     color: white;
@@ -49,7 +53,7 @@ body
 }
 
 #id_status_requisição{
-    height: 46px;
+    height: 60px;
     border: none;
     overflow: hidden;
     background-color: #191919;
@@ -90,11 +94,22 @@ body
 #id_status_requisição .aprovar:hover
 {
     background-color: green;
+    transition: 1s;
 
 }
 #id_status_requisição .reprovar:hover
 {
     background-color: red;
+    transition: 1s;
+}
+#id_status_requisição .aprovar:not(:hover)
+{
+    transition: 1s;
+
+}
+#id_status_requisição .reprovar:not(:hover)
+{
+    transition: 1s;
 }
 .dados
 {

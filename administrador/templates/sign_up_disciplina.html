@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.admin.html' %}
 {% load static %}
 
 {% block import_title_css %}
@@ -14,15 +14,26 @@
         {%csrf_token%}
         <div class="nome_perido">
             
-            {{form.nome}}
-            {{form.perido}}
+            <div>
+                <p class="label_form">Nome da disciplina</p>
+                {{form.nome}}
+            </div>
+            
+            <div>
+                <p class="label_form">Periodo da disciplina</p>
+                {{form.perido}}
+            </div>
+            
 
         </div>
 
         <div class="carga_horaria_optativa">
 
-
-            {{ form.carga_horaria }}
+            <div>
+                <p  class="label_form">Carga horaria</p>
+                {{ form.carga_horaria }}
+            </div>
+            
 
             <div class="radio_title">
                 
@@ -44,9 +55,36 @@
 
         </div>
     
-        <input type="submit" value="Cadastrar Curso">
+        <div class="row_five">
+            <button>
+                <input type="submit" id="input"value="Cadastrar Disciplina">
+            </button>
+        </div>
         
     </form>
 
 </div>
+{% endblock %}
+
+
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+    $(() => {
+        const search = $("#search_box")
+        const tbody = $("tbody").html()
+    
+        $("#search_box").keyup(() => {
+            let text = search.val()
+            if (text.length === 0) {
+                $("tbody").replaceWith("<tbody>" + tbody + "</tbody>")
+            } else {
+                $.get(`/adm/list_teacher_ajax/${text}`, (data) => {
+                    $("tbody").replaceWith(data)
+                })
+            }
+        })
+    })
+</script>
 {% endblock %}
