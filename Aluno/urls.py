@@ -8,8 +8,8 @@ from .views import  home_aluno,\
                     modal_selecionarAC,\
                     modal_menu,\
                     password_change,\
-                        requisitar_aproveitamento_de_disciplina,\
-                        requisitar_certificacao_de_conhecimento_class
+                    requisitar_aproveitamento_de_disciplina,\
+                    requisitar_certificacao_de_conhecimento_class
                         
 
 

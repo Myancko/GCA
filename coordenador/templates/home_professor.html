@@ -37,8 +37,15 @@
                     <div class="requisicao_content">
                         <p>{{total_certificacao}}</p>
                         <div class="content_button_column">
+                            
 
-                            <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
+                            <a href="{% url 'iniciar_certificacao' usuario.curso_relacao.id %}">
+                                
+                                <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
+
+                            </a>
+                        
+                            
 
                             <a href="{% url 'certificacao_list' %}"   >
 

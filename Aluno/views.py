@@ -167,10 +167,19 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
     
 
     def get(self, request, *args, **kwargs) -> HttpResponse:
+        
+
+
         print(kwargs['disciplina_id'], "<<<<<")
 
         disciplina = Disciplina.objects.all()
         disciplina_requisição = Disciplina.objects.get(id=kwargs['disciplina_id'])
+
+
+        if disciplina_requisição.aberto == False:
+            print('retorna')
+
+            return HttpResponseRedirect(reverse('sweet_home'))
 
         self.extra_context= {'disciplina': disciplina_requisição}
         return super().get(request, *args, **kwargs)

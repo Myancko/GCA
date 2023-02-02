@@ -17,6 +17,8 @@ class Disciplina (models.Model):
     carga_horaria = models.IntegerField(("Carga Horaria"))
     optativa = models.CharField(("Opitativa"), choices=OPTATIVA, blank=False, null=False,max_length=20)
     dependencia = models.ManyToManyField("self", verbose_name=("Dependencias"), blank=True, default='Sem Dependencia')
+    aberto = models.BooleanField(("Aberto"), default='False')
+    data_final = models.DateTimeField(("Data Final"), blank=True, null=True,auto_now=False, auto_now_add=False)
     
     verbose_name = 'Disciplina'
     verbose_name_plural = 'Disciplinas'

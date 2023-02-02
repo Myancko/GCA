@@ -78,17 +78,51 @@ def home_professor (request):
 
         requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
 
+        usuario = request.user
+        print(usuario.curso_relacao.id)
+
         return render(request, 'home_professor.html', { 'total_aproveitamentos': len(requisicoes_de_aproveitamento),
                                                         'aproveitamento': requisicoes_de_aproveitamento,
                                                         'total_certificacao' : len (requisicoes_de_certificacao),
                                                         'certificacao' : requisicoes_de_certificacao,
-                                                        'coordenador': coordenador})
+                                                        'coordenador': coordenador,
+                                                        'usuario':usuario})
     except:
         coordenador = False
         msg = 'Você não é Coordenador :p'
         return render(request, 'home_professor.html', {'coordenador': coordenador,
                                                        'msg': msg}) 
     
+def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
+
+    aluno = request.user
+
+    #curso = Curso.objects.all()
+    curso  = Curso.objects.get(id=curso_id)
+    m2m  = curso.disciplina.all()
+    len_disciplinas = len(curso.disciplina.all())
+    
+    len_optativas = 0
+    len_nao_opttivas = 0
+    
+    for disciplina in m2m:
+        if disciplina.optativa == 'S':
+            len_optativas  +=1
+        else:
+            len_nao_opttivas += 1
+    
+    return  render (request, 'periodo_de_certificacao_listagem.html', {'curso': curso,
+                                                       'disciplinas' : m2m,
+                                                       'total_disciplinas' : len_disciplinas,
+                                                       'total_de_optativas': len_optativas,
+                                                       'total_de_nao_optativas' : len_nao_opttivas})
+    
+    return  render(request, 'periodo_de_certificacao_listagem.html', {})
+
+def iniciar_periodo_disciplina(request, disciplina_id):
+
+    return render(request, 'iniciar_periodo_disciplina.html', {}) 
+
 def lista_aproveitamento (request):
     
     professor = User.objects.get(id=request.user.id)
@@ -120,7 +154,6 @@ def lista_aproveitamento (request):
     
     return  render(request, 'requisicoes_aproveitamento_lista.html', {'aproveitamento': requisicoes_de_aproveitamento})
 
-   
 def lista_certificacao (request):
     
     professor = User.objects.get(id=request.user.id)
@@ -151,7 +184,6 @@ def lista_certificacao (request):
     requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
     
     return  render(request, 'requisicoes_certificação_lista.html', {'certificacao': requisicoes_de_certificacao})
-
 
 def aproveitamento (request, aproveitamento_id):
     

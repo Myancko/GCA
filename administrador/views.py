@@ -123,7 +123,7 @@ class SignUpView_Student(LoginRequiredMixin,CreateView):
             senha_temporaria = z + str(x) + str(y) + '.'
 
             self.extra_context= {'senha': senha_temporaria}
-            return super().post(request, *args, **kwargs)
+            return super().get(request, *args, **kwargs)
         
         else:
             
@@ -228,7 +228,7 @@ class SignUpView_Teacher(LoginRequiredMixin,CreateView):
             senha_temporaria = z + str(x) + str(y) + '.'
 
             self.extra_context= {'senha': senha_temporaria}
-            return super().get(request, *args, **kwargs)
+            return super().post(request, *args, **kwargs)
         
         else:
             
