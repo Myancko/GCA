@@ -10,40 +10,57 @@
 
 {% block main %}
 <p class="white title">{{disciplina.nome}}</p>
-
-<div class="form_disciplina">
-    
-    <div class="dados">
-        <p class="white"> Perido da Disciplina: {{form.perido.value}} </p>
-        <p class="white"> Carga Horaria: {{form.carga_horaria.value}}</p>
-        {% if form.optativa.value == 'S' %}
-            <p class="white"> Optativa: SIM</p>
-        {% elif form.optativa.value == 'N' %}
-            <p class="white"> Optativa: NÃO</p>
-        {% endif %}
-
-        {%  if form.aberto.value == False %}
-            <p class="white">Status Para requsição de aproveitamento de disciplina: Fechado</p>
-        {% elif form.aberto.value == True %}
-            <p class="white">Status Para requsição de aproveitamento de disciplina: Aberto</p>
-        {% endif %}
-        
-        <p class="white">Digite uma data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
-    </div>
-
-    <div class="dependencias">
-        <p class="white title_dependencias">Dependencias:</p>
-
-        <div class="lista_das_dependencias">
-            {% for disciplinas in dependencias.all %}
-                <p class="white">{{disciplinas.nome}}</p>
-            {% endfor %}
-        </div>
-    </div>
-
-</div>
-
 <form action=""  method="POST">
     {%csrf_token%}
+    <div class="form_disciplina">
+
+        <div class="dados">
+            <p class="white"> Perido da Disciplina: {{form.perido.value}} </p>
+            <p class="white"> Carga Horaria: {{form.carga_horaria.value}}</p>
+            {% if form.optativa.value == 'S' %}
+                <p class="white"> Optativa: SIM</p>
+            {% elif form.optativa.value == 'N' %}
+                <p class="white"> Optativa: NÃO</p>
+            {% endif %}
+
+            {%  if form.aberto.value == False %}
+                <p class="white">Status Para requsição de aproveitamento de disciplina: Fechado</p>
+            {% elif form.aberto.value == True %}
+                <p class="white">Status Para requsição de aproveitamento de disciplina: Aberto</p>
+            {% endif %}
+            
+            {% if form.data_final.value != None %}
+                <p class="white" style="pointer-events: none; touch-action: none; ">Digite uma data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
+                <p class="white_" >A data final para as requisições de certificações de conhecimento para a disciplina de {{disciplina.nome}} é {{disciplina.data_final}}</p>
+            {% else %}
+                <p class="white">Digite uma data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
+            {% endif %}
+        </div>
+
+        <div class="dependencias">
+            <p class="white title_dependencias">Dependencias:</p>
+
+            <div class="lista_das_dependencias">
+                {% for disciplinas in dependencias.all %}
+                    <p class="white">{{disciplinas.nome}}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <button class="star_chain">
+        <input type="submit" value='Iniciar Certificação de conhecimento'>
+    </button>
+
+    <!-- {{form.as_p}} -->
+
+    <div class="display_hidden"  >
+        {{form.nome}}
+        {{form.perido}}
+        {{form.carga_horaria}}
+        {{form.optativa}}
+        {{form.dependencia}}
+    </div>
+
 </form>
 {% endblock %}

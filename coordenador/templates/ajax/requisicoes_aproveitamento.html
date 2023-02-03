@@ -1,0 +1,21 @@
+<tbody>
+    {% for dados in aproveitamento %}
+        <tr>
+
+            <th scope="row"> {{dados.id}} </th>
+            <td>{{dados.requisitor}}</td>
+            <td>{{dados.disciplina}}</td>
+            <td class="center_tabl_">{{dados.status_requisição}}</td>
+            <td class="center_table">
+                <a href="{% url 'aproveitamento' dados.id %}">
+
+                    <button>
+                        Visualizar
+                    </button>
+
+                </a>
+            </td>
+            
+        </tr>
+    {% endfor %}
+</tbody>

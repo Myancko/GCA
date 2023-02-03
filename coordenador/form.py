@@ -33,21 +33,21 @@ class Form_disciplina_iniciar_perido_de_certificacao (ModelForm):
     def __init__  (self, *args, **kargs):
         super().__init__(*args, **kargs)
         self.fields['nome'].label =  ''
-        self.fields['nome'].widget.attrs.update({'class': 'nome_perido', 'placeholder': 'Nome' })
+        self.fields['nome'].widget.attrs.update({'class': 'nome_perido', 'placeholder': 'Nome', 'readOnly': 'true' })
         
         self.fields['data_final'].label =  ''
-        self.fields['data_final'].widget.attrs.update({'min':data_de_hoje })
+        self.fields['data_final'].widget.attrs.update({'class': 'data_final', 'min':data_de_hoje })
         
         self.fields['aberto'].label =  ''
         self.fields['aberto'].widget.attrs.update({'class': 'disciplina_requisicao', 'placeholder': 'Status da disciplina' })
         
         self.fields['perido'].label =  ''
-        self.fields['perido'].widget.attrs.update({'class': 'perido', 'placeholder': 'Perido'} )
+        self.fields['perido'].widget.attrs.update({'class': 'perido', 'placeholder': 'Perido', 'readOnly': 'true'} )
         
         self.fields['carga_horaria'].label =  ''
-        self.fields['carga_horaria'].widget.attrs.update({'class': 'carga_horaria', 'placeholder': 'Carga Horaria da Disciplina' })
+        self.fields['carga_horaria'].widget.attrs.update({'class': 'carga_horaria', 'placeholder': 'Carga Horaria da Disciplina', 'readOnly': 'true' })
         
         #self.fields['optativa'].label =  ''    
-        self.fields['optativa'].widget.attrs.update({'class': 'optativa','placeholder': 'optativa'})
+        self.fields['optativa'].widget.attrs.update({'class': 'optativa','placeholder': 'optativa', 'readOnly': 'true'})
         
         self.fields['dependencia'].widget.attrs.update({'class': 'dependencia', 'placeholder': 'dependencia'})

@@ -41,6 +41,8 @@ class Certificação_de_conhecimento (models.Model):
     disciplina =  models.ForeignKey('administrador.Disciplina', on_delete=models.CASCADE)
     status_requisição = models.CharField(("Status"), choices=STATUS, blank=False, null=False, max_length=20,  default='reprovado')
     nota = models.FloatField(("Nota"), blank=True, null=True, default=0)
+    pedagogo = models.ForeignKey (User, verbose_name=("pedagogo"), on_delete=models.CASCADE, related_name='pedagogo', blank=True, null=True)
+    banca_de_professores = models.ManyToManyField(User, verbose_name=("Professores"), related_name='professores', blank=True, null=True)
     requisitor =  models.ForeignKey(User, verbose_name=("Requisitor"), on_delete=models.CASCADE, blank=False, null=False)
 
     verbose_name = 'Certificação de conhecimento'

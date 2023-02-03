@@ -6,7 +6,9 @@ from .views import  home_professor,\
                     aproveitamento,\
                     certificacao,\
                     iniciar_periodo_disciplina,\
-                    iniciar_periodo_de_certificacao_listagem_disciplinas
+                    iniciar_periodo_de_certificacao_listagem_disciplinas,\
+                    search_aproveitamento,\
+                    search_certificacao
 urlpatterns = [
     
     path('home_coordenador/', home_professor, name='sweet-home_teacher'),
@@ -17,4 +19,7 @@ urlpatterns = [
     path('lista_aproveitamento/<int:aproveitamento_id>', aproveitamento, name='aproveitamento'),
     path('lista_certificacao/<int:certificacao_id>', certificacao, name='certificacao'),
     path('professor_home/alterar_senha/',  password_change.as_view(), name = 'teacher_change_password'),
+
+    path('lista_aproveitamento/ajax/<str:text>', search_aproveitamento, name = 'ajax-aproveitamento'),
+    path('lista_certificacao/ajax/<str:text>', search_certificacao, name = 'ajax-certificacao'),
 ]

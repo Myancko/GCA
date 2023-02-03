@@ -12,12 +12,13 @@ from django.contrib.auth.views import PasswordChangeView
 #from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import redirect
 from django.db.models import Q
-
 from django.contrib.auth import get_user_model
 User = get_user_model()
-
 from django.views.generic.edit import CreateView
-# Create your views here.
+from datetime import date, timedelta
+from django.contrib import messages
+dia_de_hj = date.today()
+
 
 @login_required(login_url='/user/login/')
 def home_aluno (request):
@@ -168,19 +169,36 @@ class requisitar_certificacao_de_conhecimento_class(CreateView):
 
     def get(self, request, *args, **kwargs) -> HttpResponse:
         
-
+        
 
         print(kwargs['disciplina_id'], "<<<<<")
+        user = request.user
 
         disciplina = Disciplina.objects.all()
         disciplina_requisição = Disciplina.objects.get(id=kwargs['disciplina_id'])
+        print(dia_de_hj+timedelta(days=10), '<<<<<<< aq')
+
+        if disciplina_requisição.aberto == True and disciplina_requisição.data_final > dia_de_hj:
+            
+            if disciplina_requisição.aberto == False:
+                print('retorna')
+
+                return HttpResponseRedirect(reverse('sweet_home'))
+
+            self.extra_context= {'disciplina': disciplina_requisição}
+            return super().get(request, *args, **kwargs)
+
+        else:
+            if disciplina_requisição.aberto == False:
+                messages.error(request, 'O perido para a requisição de certificação de conhecimento da disciplina '+ '\''+str(disciplina_requisição.nome)+'\''+
+                                ' Não foi iniciado.')
+                return redirect('sweet_home') 
+
+            elif disciplina_requisição.data_final < dia_de_hj:
+                messages.error(request, 'O perido para as requisições de certificação de conhecimento da disciplina '+ '\''+str(disciplina_requisição.nome)+'\''+
+                                ' expirou no dia '+str(disciplina_requisição.data_final.day)+
+                                                 '/'+str(disciplina_requisição.data_final.month)+
+                                                 '/'+str(disciplina_requisição.data_final.year) )
+                return redirect('sweet_home') 
 
 
-        if disciplina_requisição.aberto == False:
-            print('retorna')
-
-            return HttpResponseRedirect(reverse('sweet_home'))
-
-        self.extra_context= {'disciplina': disciplina_requisição}
-        return super().get(request, *args, **kwargs)
-    

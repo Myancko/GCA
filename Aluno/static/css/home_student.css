@@ -89,3 +89,22 @@
     margin-bottom: 1%;
 
 }
+.error
+{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: red;
+}
+.error li
+{
+    color: red;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.error ul
+{
+    float: right;
+}

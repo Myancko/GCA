@@ -1,0 +1,35 @@
+o pedagogo da nota tambem?
+os professores aprovam os aluno ou o sistema aprova com base em uma nota media?
+
+
+
+
+
+
+
+
+
+
+cada professor vai poder vizualizar as requisicoes em que eles esta vinculado, 
+tembem vizualizar as que ja passaram e ele participou
+
+
+
+
+ementa if 
+emanta da outra facu 
+-comprovante
+-ver resutados aluno requisicoes
+
+
+
+
+				nome da disciplina
+{
+	lista com os alunos que foram aprovados
+}
+
+
+a banca da certificação de conhecimento da discipina x foi compostas pelo pedagogo x e os professores xxx
+
+				(botão de imprimir)

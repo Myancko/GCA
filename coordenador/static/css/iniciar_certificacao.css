@@ -6,6 +6,10 @@ body
 {
     color: white;
 }
+.white_
+{
+    color: #eedb75;
+}
 .title
 {
     font-size: 32px;
@@ -16,15 +20,64 @@ body
     
     background-color: #545454;
     padding: 10px;
-    margin:  0% 2.5% 2.5% 2.5%;
+    margin:  0% 2.5% 0.7% 2.5%;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-radius: 3px;
 }
 .dependencias
 {
     display: flex;
     flex-basis: 260px;
     gap: 10px ;
+}
+.display_hidden
+{
+    visibility: hidden;
+}
+.optativa, .dependencia, .data_final_False
+{
+    pointer-events: none;
+    touch-action: none;
+    width: 745px; 
+    background-color:  #c1c1c1;
+    position: absolute;
+}
+
+.star_chain
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    background-color: #eedb75;
+    width: 341px;
+    height: 63px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 25%;
+    margin-right: 2.5%;
+    float: right;
+}
+
+input[type=submit]
+{
+    border: none;
+    background-color: #eedb75;
+    color: black;
+    font-weight: 900;
+    font-size: 20;
+}
+ .star_chain:hover , .star_chain:hover input[type=submit]
+{
+    background-color: #FFD700;
+    transition: 1s;
+}
+ .star_chain:not(:hover) , .star_chain:not(:hover) input[type=submit]
+{
+    background-color: #eedb75;
+    transition: 0.1s;
 }

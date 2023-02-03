@@ -192,9 +192,22 @@ def iniciar_periodo_disciplina(request, disciplina_id):
     dependencias_disciplina = dados_disciplina.dependencia
     print(dependencias_disciplina)
     form = Form_disciplina_iniciar_perido_de_certificacao(request.POST or None, request.FILES or None, instance = dados_disciplina)
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect(reverse('home'))
+
+    if request.method == "POST":
+
+        if form.is_valid():
+            form.save()
+            data = request.POST['data_final']
+            print(data, '<<<<<')
+            dados_disciplina = Disciplina.objects.filter(id=disciplina_id).update(aberto=True)       
+            try:
+                for objetos in dados_disciplina:
+                    objetos.save()
+
+            except:
+
+                
+                return redirect('home')   
     
     return render(request, 'iniciar_periodo_disciplina.html', {'disciplina':dados_disciplina,
                                                                'dependencias':dependencias_disciplina,
@@ -275,3 +288,14 @@ class password_change(PasswordChangeView):
         
         return super().form_valid(form)
  
+def search_aproveitamento (request, text):
+
+    aproveitamento = Aproveitamento_de_disciplina.objects.filter(requisitor__username__contains=text)
+    print(aproveitamento)
+    return render(request, 'ajax/requisicoes_aproveitamento.html', {'aproveitamento': aproveitamento})
+
+def search_certificacao (request, text):
+
+    certificacao = Certificação_de_conhecimento.objects.filter(requisitor__username__contains=text)
+    print(aproveitamento)
+    return render(request, 'ajax/requisicoes_certificacao.html', {'certificacao': certificacao})
