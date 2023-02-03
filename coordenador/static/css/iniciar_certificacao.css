@@ -1,0 +1,30 @@
+body
+{
+    background-color: #191919;
+}
+.white
+{
+    color: white;
+}
+.title
+{
+    font-size: 32px;
+    margin-left: 2.5%;
+}
+.form_disciplina
+{
+    
+    background-color: #545454;
+    padding: 10px;
+    margin:  0% 2.5% 2.5% 2.5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.dependencias
+{
+    display: flex;
+    flex-basis: 260px;
+    gap: 10px ;
+}

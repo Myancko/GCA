@@ -11,6 +11,10 @@ from django.contrib.auth import get_user_model
 from Aluno.form import Form_aproveitamento_de_disciplina, Form_certificação_de_conhecimento
 from django.db.models import Q
 from django.shortcuts import redirect
+from datetime import date
+from .form import Form_disciplina_iniciar_perido_de_certificacao
+
+
 
 User = get_user_model()
 
@@ -119,10 +123,6 @@ def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
     
     return  render(request, 'periodo_de_certificacao_listagem.html', {})
 
-def iniciar_periodo_disciplina(request, disciplina_id):
-
-    return render(request, 'iniciar_periodo_disciplina.html', {}) 
-
 def lista_aproveitamento (request):
     
     professor = User.objects.get(id=request.user.id)
@@ -184,6 +184,22 @@ def lista_certificacao (request):
     requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
     
     return  render(request, 'requisicoes_certificação_lista.html', {'certificacao': requisicoes_de_certificacao})
+
+def iniciar_periodo_disciplina(request, disciplina_id):
+
+    dados_disciplina = Disciplina.objects.get(id=disciplina_id)
+    print(dados_disciplina)
+    dependencias_disciplina = dados_disciplina.dependencia
+    print(dependencias_disciplina)
+    form = Form_disciplina_iniciar_perido_de_certificacao(request.POST or None, request.FILES or None, instance = dados_disciplina)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('home'))
+    
+    return render(request, 'iniciar_periodo_disciplina.html', {'disciplina':dados_disciplina,
+                                                               'dependencias':dependencias_disciplina,
+                                                               'form':form}) 
+
 
 def aproveitamento (request, aproveitamento_id):
     
