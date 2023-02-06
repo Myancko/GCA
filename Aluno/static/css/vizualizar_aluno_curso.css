@@ -74,6 +74,10 @@
     list-style-type: none;
     color: red;
 }
+.messages li p
+{
+    text-align: center;
+}
 
 
 /* css pra tela de visualizar as requiscições */

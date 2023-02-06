@@ -46,23 +46,43 @@
                     </thead>
                     <tbody>
                         {% for dados in certificacoes %}
-                            <tr>
-    
-                                <th scope="row"> {{dados.id}} </th>
-                                <td>{{dados.requisitor}}</td>
-                                <td>{{dados.disciplina}}</td>
-                                <td class="center_tabl_">{{dados.nota}}</td>
-                                <td class="center_table">
-                                    <a href="{% url 'certificacao' dados.id %}">
-    
-                                        <button>
-                                            Visualizar
-                                        </button>
-    
-                                    </a>
-                                </td>
+                            {% if dados.status_requisição == 'aprovado' %}
+                                <tr style="background-color: #9cff9c;">
                                 
-                            </tr>
+                                    <th scope="row"> {{dados.id}} </th>
+                                    <td>{{dados.requisitor}}</td>
+                                    <td>{{dados.disciplina}}</td>
+                                    <td class="center_tabl_">{{dados.nota}}</td>
+                                    <td class="center_table">
+                                        <a>
+                                        
+                                            -
+                                        
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            {% else %}
+
+                                <tr>
+                                    
+                                    <th scope="row"> {{dados.id}} </th>
+                                    <td>{{dados.requisitor}}</td>
+                                    <td>{{dados.disciplina}}</td>
+                                    <td class="center_tabl_">{{dados.nota}}</td>
+                                    <td class="center_table">
+                                        <a href="{% url 'certificacao' dados.id %}">
+                                        
+                                            <button>
+                                                Visualizar
+                                            </button>
+                                        
+                                        </a>
+                                    </td>
+                                
+                                </tr>
+                            
+                            {% endif %}
                         {% endfor %}
                     </tbody>
                   </table>

@@ -196,7 +196,26 @@ def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
         messages.warning(request, 'Você já iniciou uma requisição de certificacao de conhecimento para a disciplina ' + str( disiciplina.nome ) +
                          ' \ne não pode iniciar uma requisição de aproveitamento de disciplina.')
         return redirect('curso_aluno', aluno.curso_relacao.id ) 
+    
     except:
+        
+        dependencias = 0  
+        concluidas = 0 
+        for dependencia in disciplina_requisição.dependencia.all():
+            #verificar dependencias
+            dependencias += 1 
+            for diciplinas_concluida in aluno.disciplina_concluidas.all():
+                if dependencia == diciplinas_concluida:
+                    concluidas  +=1
+                    
+        print(dependencias, concluidas, '<<<')
+        if dependencias == concluidas:
+            print('pd passar')
+            print(dependencias, concluidas, '<<<')
+        else:
+            messages.warning(request, 'Você não tem as dependencias da disciplina  ' + str( disciplina_requisição.nome ))
+            return redirect('curso_aluno', aluno.curso_relacao.id ) 
+        
         form = Form_aproveitamento_de_disciplina() 
 
         if request.method == "POST":
