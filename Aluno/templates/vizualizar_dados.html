@@ -12,12 +12,17 @@
 
 {% block main %}
 
-    <!-- <p>{{curso}}</p>
-    {% for disciplina in disciplinas %}
-        <p>{{disciplina}}</p>
-    {% endfor %} -->
     <div class="main">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li><p>{{ message }}</p></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         
+
 
         <div class="curso">
             <p class="titulo_curso">Curso</p>
@@ -73,7 +78,17 @@
                             <th scope="row"> {{disciplina.id}} </th>
                             <td>{{disciplina.nome}}</td>
                             <td>{{disciplina.perido}}</td>
-                            <td><!-- {{disciplina.status}} --> Cursando</td>
+                            {% if not user.disciplina_concluidas.all%}
+                                <td><!-- {{disciplina.status}} --> Cursando</td>
+                            {% else %}
+                                {% for disciplina_concluida in user.disciplina_concluidas.all%}
+                                    {% if disciplina_concluida == disciplina%}
+                                        <td><!-- {{disciplina.status}} --> Cursada</td>  
+                                    {% else %}   
+                                        <td><!-- {{disciplina.status}} --> Cursando</td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                             <td>{{disciplina.carga_horaria}}</td>
                             <td>
 

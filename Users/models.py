@@ -87,6 +87,8 @@ class CustomUser(AbstractUser):
     curso_relacao = models.ForeignKey("administrador.Curso", verbose_name=("Curso"), blank=True, null=True,on_delete=models.SET_NULL)
     disciplina_relacao = models.ManyToManyField("administrador.Disciplina", verbose_name=("Disciplina"), blank=True)
     
+    disciplina_concluidas = models.ManyToManyField("administrador.Disciplina", related_name='Disciplina_cluidas', verbose_name=("Disciplina Concluidas"), blank=True)
+    
     is_staff = models.BooleanField('Membro da equipe', default=True)
 
     USERNAME_FIELD = 'matricula'

@@ -12,13 +12,23 @@ class Disciplina (models.Model):
         ("N", "Não"),
     )
     
+    STATUS = (
+        ("Cursando", "Cursando"),
+        ("Aprovado", "Aprovado"),
+        ("Espera", "Espera")
+    )
+    
     nome = models.CharField(("Nome da Disciplina"), max_length=150, null=False)
     perido = models.IntegerField(("Periodo da disciplina"))
     carga_horaria = models.IntegerField(("Carga Horaria"))
     optativa = models.CharField(("Opitativa"), choices=OPTATIVA, blank=False, null=False,max_length=20)
     dependencia = models.ManyToManyField("self", verbose_name=("Dependencias"), blank=True, default='Sem Dependencia')
     aberto = models.BooleanField(("Aberto"), default='False')
+    status = models.CharField('Status', choices=STATUS, max_length=20, default="Cursando")
     data_final = models.DateField(("Data Final"), blank=True, null=True,auto_now=False, auto_now_add=False)
+    
+    pedagogo = models.ForeignKey (User, verbose_name=("pedagogo"), on_delete=models.CASCADE, related_name='pedagogo', blank=True, null=True)
+    banca_de_professores = models.ManyToManyField(User, verbose_name=("Banca de professores"), related_name='professores')
     
     verbose_name = 'Disciplina'
     verbose_name_plural = 'Disciplinas'

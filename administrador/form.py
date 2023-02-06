@@ -2,6 +2,8 @@ from django import forms
 from django.forms import ModelForm
 from .models import Disciplina, Curso
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class Form_disciplina (ModelForm):
     
@@ -46,10 +48,12 @@ class Form_Curso (ModelForm):
     erro_css_class = 'erro-field'
     required_css_class= 'disciplina-fields'
     
+    ano = forms.DateField(widget=DateInput)
+    
     class Meta:
         model = Curso
         fields = 'nome','ano','periodos','disciplina','coordenador'
-        
+    
     def __init__  (self, *args, **kargs):
         super().__init__(*args, **kargs)
 

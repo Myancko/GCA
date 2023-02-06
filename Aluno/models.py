@@ -13,8 +13,12 @@ class Aproveitamento_de_disciplina (models.Model):
 
     disciplina =  models.ForeignKey('administrador.Disciplina', on_delete=models.CASCADE)
     motivo = models.CharField("Motivo", max_length=250, blank=True, null=True)
+    
     historico = models.FileField(("Historico"), upload_to='documentos', max_length=1000)
-    comprovante = models.FileField(("Comprovante"), upload_to='documentos', max_length=1000)
+    ementa = models.FileField(("Ementa antiga escola"), upload_to='documentos', max_length=1000)
+    ementa_atual = models.FileField(("Ementa nova escola"), upload_to='documentos', max_length=1000)
+    comprovante = models.FileField(("Comprovante"), upload_to='documentos', max_length=1000, blank=True, null=True)
+    
     status_requisição = models.CharField(("Status"), choices=STATUS, blank=False, null=False, max_length=20,  default='reprovado')
     requisitor =  models.ForeignKey(User, verbose_name=("Requisitor"), on_delete=models.CASCADE, blank=False, null=False)
  
@@ -41,8 +45,6 @@ class Certificação_de_conhecimento (models.Model):
     disciplina =  models.ForeignKey('administrador.Disciplina', on_delete=models.CASCADE)
     status_requisição = models.CharField(("Status"), choices=STATUS, blank=False, null=False, max_length=20,  default='reprovado')
     nota = models.FloatField(("Nota"), blank=True, null=True, default=0)
-    pedagogo = models.ForeignKey (User, verbose_name=("pedagogo"), on_delete=models.CASCADE, related_name='pedagogo', blank=True, null=True)
-    banca_de_professores = models.ManyToManyField(User, verbose_name=("Professores"), related_name='professores', blank=True, null=True)
     requisitor =  models.ForeignKey(User, verbose_name=("Requisitor"), on_delete=models.CASCADE, blank=False, null=False)
 
     verbose_name = 'Certificação de conhecimento'

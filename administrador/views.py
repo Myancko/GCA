@@ -17,7 +17,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .form import Form_disciplina, Form_Curso
 from Users import forms
 from .models import Disciplina, Curso
+from Aluno.models import Certificação_de_conhecimento
 from django.http import JsonResponse
+from datetime import date
 
 from Users.forms import CustomUserCreateForm,  CustomUserChangeForm, CustomUserChangeForm_Config
 import random
@@ -46,6 +48,43 @@ True
 
 @login_required(login_url='/user/login/')
 def home_view (request):
+    
+    expirar_disciplinas = Disciplina.objects.all()
+    for disciplina in expirar_disciplinas:
+        print(disciplina.data_final, '<<<<<<<')   
+        if disciplina.data_final != None:
+            if disciplina.data_final > date.today():
+                print(disciplina.nome,'expirou')
+                disiciplina_q_expirou = disciplina
+                disiciplina_q_expirou.banca_de_professores.clear()
+                disiciplina_q_expirou.pedagogo = None
+                disiciplina_q_expirou.aberto = False
+                disiciplina_q_expirou.data_final = None
+                disciplina.save()
+                try:
+                    certificacao = Certificação_de_conhecimento.objects.get(disciplina=disciplina.id)
+                    print(certificacao, disciplina, certificacao.nota,'<<<') 
+
+                    if certificacao.nota >= 60:
+                          print('aluno', certificacao.requisitor.username, 'aprovado')
+                          certificacao.status_requisição = 'aprovado'
+                          aluno_aprovado = User.objects.get(id=certificacao.requisitor.id)
+                          print(aluno_aprovado,'<<<')
+                          aluno_aprovado.disciplina_concluidas.add(disciplina)
+                          print(aluno_aprovado.disciplina_concluidas.all(),  '<<< ')                     
+                          certificacao.save()
+                          aluno_aprovado.save()
+                    elif certificacao.nota < 60:
+                          print('aluno', certificacao.requisitor.username, 'reprovado')
+                          certificacao.status_requisição = 'reprovado'
+                          certificacao.save()
+                except:
+                    messages.warning(request, 'Não Existem requisições pra a certificacao de conhecimento da disciplina' + str( disciplina.nome ))
+                    return redirect('home')  
+            else:
+                print(disciplina.nome, disciplina.data_final,'ainda n expirou')
+        else:
+            print('disciplina sem data para certificacao de conhecimento.')
 
     logged = request.user
     

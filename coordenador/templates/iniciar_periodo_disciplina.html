@@ -9,6 +9,9 @@
 {% endblock %}
 
 {% block main %}
+
+{{ form.errors }}
+
 <p class="white title">{{disciplina.nome}}</p>
 <form action=""  method="POST">
     {%csrf_token%}
@@ -30,11 +33,50 @@
             {% endif %}
             
             {% if form.data_final.value != None %}
-                <p class="white" style="pointer-events: none; touch-action: none; ">Digite uma data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
+                <p class="white" style="pointer-events: none; touch-action: none; ">Data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
+                
+                <div class="banca">
+                    <p class="white">Professores que compoem a banca:</p>
+                    <!-- {{form.banca_de_professores}} -->
+                    <select style="pointer-events: none; touch-action: none; " name="banca_de_professores" required="" id="id_banca_de_professores" multiple="">
+                        
+                        {% for professor in disciplina.banca_de_professores.all %}
+                            <option value="{{professor.id}}">{{professor.username}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+
+                <div class="pedagogo">
+                    <p class="white" style="pointer-events: none; touch-action: none; ">Pedagogo:  </p>
+                    <p class="white" >{{disciplina.pedagogo.username}}</p>
+                </div>
+
                 <p class="white_" >A data final para as requisições de certificações de conhecimento para a disciplina de {{disciplina.nome}} é {{disciplina.data_final}}</p>
             {% else %}
                 <p class="white">Digite uma data para a Finalização das requisições de certificação de conhecimento: {{form.data_final}}</p>
+
+                              
+                <div class="banca">
+                    <p class="white">Selecione os professores para compor a banca:</p>
+                    <!-- {{form.banca_de_professores}} -->
+                    <select name="banca_de_professores" required="" id="id_banca_de_professores" required multiple="">
+                        
+                        {% for professor in professores%}
+                            <option value="{{professor.id}}">{{professor.username}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+
+                <div class="pedagogo">
+                    <p class="white">Selecione um pedagogo:  </p>
+                    {{form.pedagogo}}
+                </div>
+
             {% endif %}
+
+            
+
+            
         </div>
 
         <div class="dependencias">
@@ -48,9 +90,14 @@
         </div>
 
     </div>
-    <button class="star_chain">
-        <input type="submit" value='Iniciar Certificação de conhecimento'>
-    </button>
+
+    {% if form.data_final.value != None %}
+       
+    {% else %}
+        <button class="star_chain">
+            <input type="submit" value='Iniciar Certificação de conhecimento'>
+        </button>
+    {% endif %}
 
     <!-- {{form.as_p}} -->
 

@@ -3,10 +3,14 @@ from django.forms import ModelForm
 from administrador.models import Disciplina
 from datetime import date
 from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.auth.models import Group
+from django.contrib.auth import get_user_model
+User = get_user_model()
 data_de_hoje = date.today()
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
 
 class Form_disciplina_iniciar_perido_de_certificacao (ModelForm):
     
@@ -22,13 +26,15 @@ class Form_disciplina_iniciar_perido_de_certificacao (ModelForm):
         ("N", "Não"),
     )
 
+    grupo_profesor = Group.objects.get(name='Pedagogo')
+    professores = User.objects.filter(groups=grupo_profesor)
     
     optativa = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES )
-
-         
+    pedagogo = forms.ModelChoiceField(required=True,  queryset=professores)
+    
     class Meta:
         model = Disciplina
-        fields = 'nome', 'perido', 'carga_horaria', 'optativa', 'dependencia', 'aberto', 'data_final'
+        fields = 'nome', 'perido', 'carga_horaria', 'optativa', 'dependencia', 'aberto', 'data_final', 'banca_de_professores', 'pedagogo'
 
     def __init__  (self, *args, **kargs):
         super().__init__(*args, **kargs)

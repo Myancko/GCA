@@ -5,8 +5,8 @@ from django.contrib import admin
 from django.urls import path
 from .views import  home_aluno,\
                     aluno_curso,\
-                    modal_selecionarAC,\
-                    modal_menu,\
+                    vizualizar_minhas_requisicoes_de_aproveitamento,\
+                    vizualizar_minhas_requisicoes_de_certificacao,\
                     password_change,\
                     requisitar_aproveitamento_de_disciplina,\
                     requisitar_certificacao_de_conhecimento_class
@@ -28,7 +28,7 @@ urlpatterns = [
     #path('requisitar_certificacao_de_conhecimento/<int:disciplina_id>',  requisitar_certificacao_de_conhecimento, name='r_certificacao'),
     path('requisitar_certificacao_de_conhecimento/<int:disciplina_id>',  requisitar_certificacao_de_conhecimento_class.as_view(), name='r_certificacao'),
     
-    path('teste/modais', modal_selecionarAC, name = 'modal'),
-    path('teste/modal_menu', modal_menu, name = 'modal_menu'),
+    path('aluno_requisicoes/aproveitamento/', vizualizar_minhas_requisicoes_de_aproveitamento, name='aluno_requisicoes_de_aproveitamento'),
+    path('aluno_requisicoes/certificacao/', vizualizar_minhas_requisicoes_de_certificacao, name='aluno_requisicoes_de_certificacao')
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

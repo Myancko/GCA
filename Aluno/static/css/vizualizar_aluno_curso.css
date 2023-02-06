@@ -63,3 +63,26 @@
     font-size: 20px;
     margin: 0px;
 }
+.messages
+{
+    margin: 0;
+    padding: 0;
+    width: 856px;
+    padding-top: 3%;
+    list-style-type: none;
+    margin-bottom: -25px;
+    list-style-type: none;
+    color: red;
+}
+
+
+/* css pra tela de visualizar as requiscições */
+
+.reprovado
+{
+    background-color: rgb(255 182 182);
+}
+.aprovado
+{
+    background-color: #9cff9c;   
+}

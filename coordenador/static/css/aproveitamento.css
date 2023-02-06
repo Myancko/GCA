@@ -115,3 +115,13 @@ body
     align-items: center;
     justify-content: flex-end;
 }
+.documentos a
+{
+    text-decoration: none;
+    color: #faea98;
+}
+.documentos a:hover
+{
+    text-decoration: none;
+    color: #FFD700;
+}

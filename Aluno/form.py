@@ -18,9 +18,11 @@ class Form_aproveitamento_de_disciplina (ModelForm):
         help_text='max. 42 megabytes'
     )
     
+    motivo = forms.CharField(required=False, widget=forms.Textarea(attrs={'name':'motivo', 'rows':5}))
+    
     class Meta:
         model = Aproveitamento_de_disciplina
-        fields = 'disciplina', 'motivo', 'historico', 'comprovante', 'status_requisição', 'requisitor'
+        fields = 'disciplina', 'motivo', 'historico', 'ementa', 'ementa_atual','comprovante', 'status_requisição', 'requisitor'
 
 
 

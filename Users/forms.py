@@ -8,12 +8,15 @@ from django.core.exceptions import ValidationError
 from .models import CustomUser
 from django.contrib import messages
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class CustomUserCreateForm(UserCreationForm):
     #REQUIRED_FIELDS = ['matricula','username' , 'email' ,'cpf', 'phone']
     error_messages = {
         'password_mismatch': 'Type smtn here!',
     }
+    data_de_nascimento = forms.DateField(widget=DateInput)
     class Meta:
         
         model = CustomUser
@@ -85,7 +88,7 @@ class CustomUserChangeForm(UserChangeForm):
     error_messages = {
         'password_mismatch': 'Type smtn here!',
     }
-
+    data_de_nascimento = forms.DateField(widget=DateInput)
     class Meta:
         model = CustomUser
         fields = ('image','matricula','username' , 'email' ,'cpf', 'phone', 'data_de_nascimento','curso_relacao','disciplina_relacao')
@@ -126,7 +129,7 @@ class CustomUserChangeForm_Config(UserChangeForm):
     error_messages = {
         'password_mismatch': 'Type smtn here!',
     }
-
+    data_de_nascimento = forms.DateField(widget=DateInput)
     class Meta:
         model = CustomUser
         fields = ('image','matricula','username','email','cpf','phone','data_de_nascimento','curso_relacao','disciplina_relacao')
@@ -183,7 +186,7 @@ class SetPasswordForm(forms.Form):
         strip=False,
         widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
     )
-
+    
     def __init__(self, user, *args, **kwargs):
         self.user = user
         super().__init__(*args, **kwargs)

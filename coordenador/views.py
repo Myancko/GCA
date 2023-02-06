@@ -4,6 +4,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
 from Users.forms import CustomUserCreateForm,  CustomUserChangeForm,  PasswordChangeForm
 from django.shortcuts import render
+from django.contrib.auth.models import Group
 from django.urls import reverse
 from administrador.models import Curso, Disciplina
 from Aluno.models import Aproveitamento_de_disciplina, Certificação_de_conhecimento
@@ -83,19 +84,106 @@ def home_professor (request):
         requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
 
         usuario = request.user
-        print(usuario.curso_relacao.id)
-
+        print(usuario.curso_relacao.id, '<<<')
+        
+        teacher_group = Group.objects.get(name='Professor')
+        
+        teste =  professor.disciplina_relacao.all()
+        
+        for disciplinas in teste:
+            for professor in disciplinas.banca_de_professores.all():
+                print(professor.id, professor.username, 'user-', request.user.id)
+                if professor.id == request.user.id:
+                    print('GG')
+        
+        
+        print(teste, '<')
+        
+        ###fix vvv
+        
+        banca_user = set()
+        banca_disciplina = set()
+        
+        user = User.objects.get(id=request.user.id)
+        disciplinas  = Disciplina.objects.all()
+        
+        for disciplina in disciplinas:
+            print(disciplina.banca_de_professores.all())
+            for professor in disciplina.banca_de_professores.all():
+                print(professor.id,  professor.username)
+                if professor.id == user.id:
+                    print('GG')
+                    banca_user.add(professor)
+                    banca_disciplina.add(disciplina)
+                    
+        #fix
+                  
+        print(banca_disciplina, 'aaaaaaaaa')
+            
+        msg = 'Você não é Coordenador :p'
+        teacher_group = Group.objects.get(name='Professor')
+        certificacao = Certificação_de_conhecimento.objects.all()
+        print(certificacao)
+        
+        for certificacoes in certificacao:
+            print(certificacoes.disciplina, certificacoes.disciplina.banca_de_professores.all())
+            for professor in certificacoes.disciplina.banca_de_professores.all():
+                if professor.username == request.user.username:
+                    print('GG  aq')
+        
+        
         return render(request, 'home_professor.html', { 'total_aproveitamentos': len(requisicoes_de_aproveitamento),
                                                         'aproveitamento': requisicoes_de_aproveitamento,
                                                         'total_certificacao' : len (requisicoes_de_certificacao),
                                                         'certificacao' : requisicoes_de_certificacao,
                                                         'coordenador': coordenador,
-                                                        'usuario':usuario})
+                                                        'usuario':usuario,
+                                                        'Professor': teacher_group,
+                                                        'disciplinas' : disciplinas,
+                                                        'banca':banca_user,
+                                                        'banca_disciplina':banca_disciplina,
+                                                        'certificacao':certificacao})
     except:
+        
+        banca_user = set()
+        banca_disciplina = set()
+        
+        user = User.objects.get(id=request.user.id)
+        disciplinas  = Disciplina.objects.all()
+        
+        for disciplina in disciplinas:
+            print(disciplina.banca_de_professores.all())
+            for professor in disciplina.banca_de_professores.all():
+                print(professor.id,  professor.username)
+                if professor.id == user.id:
+                    print('GG')
+                    banca_user.add(professor)
+                    banca_disciplina.add(disciplina)
+                    
+        print(banca_disciplina, 'aaaaaaaaa')
+            
         coordenador = False
         msg = 'Você não é Coordenador :p'
+        teacher_group = Group.objects.get(name='Professor')
+        certificacao = Certificação_de_conhecimento.objects.all()
+        print(certificacao)
+        
+        for certificacoes in certificacao:
+            print(certificacoes.disciplina, certificacoes.disciplina.banca_de_professores.all())
+            for professor in certificacoes.disciplina.banca_de_professores.all():
+                if professor.username == request.user.username:
+                    print('GG  aq')
+            
+        
+        
+        
         return render(request, 'home_professor.html', {'coordenador': coordenador,
-                                                       'msg': msg}) 
+                                                       'msg': msg,
+                                                       'Professor': teacher_group,
+                                                       'disciplinas' : disciplinas,
+                                                       'banca':banca_user,
+                                                       'banca_disciplina':banca_disciplina,
+                                                       'certificacao':certificacao}) 
     
 def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
 
@@ -122,6 +210,25 @@ def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
                                                        'total_de_nao_optativas' : len_nao_opttivas})
     
     return  render(request, 'periodo_de_certificacao_listagem.html', {})
+
+
+def lista_certificacao_professor (request, id):
+    
+    disciplina = Disciplina.objects.get(id=id)
+    certificacao = Certificação_de_conhecimento.objects.all()
+    certificacao_id = set()
+    
+    for certificacoes in certificacao:
+        print(certificacoes.disciplina, certificacoes.disciplina.banca_de_professores.all())
+        if certificacoes.disciplina.id == id:
+            print(certificacoes.disciplina.id, certificacoes.requisitor, '<<<')
+            certificacao_id.add(certificacoes)
+            
+    print(certificacao_id, '<<<<<<<<')
+    
+    return  render(request, 'certificacao_lista_professor.html', {'certificacoes':certificacao_id,
+                                                                  'disciplina':disciplina})
+
 
 def lista_aproveitamento (request):
     
@@ -152,7 +259,8 @@ def lista_aproveitamento (request):
     
     requisicoes_de_aproveitamento = Aproveitamento_de_disciplina.objects.filter (Q(requisitor__in = aluno_do_curso))
     
-    return  render(request, 'requisicoes_aproveitamento_lista.html', {'aproveitamento': requisicoes_de_aproveitamento})
+    return  render(request, 'requisicoes_aproveitamento_lista.html', {'aproveitamento': requisicoes_de_aproveitamento,
+                                                                      'len_aproveitamento': len(requisicoes_de_aproveitamento)})
 
 def lista_certificacao (request):
     
@@ -183,7 +291,8 @@ def lista_certificacao (request):
     
     requisicoes_de_certificacao = Certificação_de_conhecimento.objects.filter (Q(requisitor__in = aluno_do_curso))
     
-    return  render(request, 'requisicoes_certificação_lista.html', {'certificacao': requisicoes_de_certificacao})
+    return  render(request, 'requisicoes_certificação_lista.html', {'certificacao': requisicoes_de_certificacao,
+                                                                    'len_certificacao':len(requisicoes_de_certificacao)})
 
 def iniciar_periodo_disciplina(request, disciplina_id):
 
@@ -206,11 +315,14 @@ def iniciar_periodo_disciplina(request, disciplina_id):
 
             except:
 
-                
-                return redirect('home')   
+                return redirect('sweet-home_teacher')   
+    
+    grupo_profesor = Group.objects.get(name='Professor')
+    professores = User.objects.filter(groups=grupo_profesor)
     
     return render(request, 'iniciar_periodo_disciplina.html', {'disciplina':dados_disciplina,
                                                                'dependencias':dependencias_disciplina,
+                                                               'professores' : professores,
                                                                'form':form}) 
 
 
@@ -233,12 +345,39 @@ def aproveitamento (request, aproveitamento_id):
 def certificacao (request, certificacao_id):
     
     certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
-    
     form = Form_certificação_de_conhecimento(request.POST or None, instance = certificacao)
     
     if form.is_valid():
+        
+        x = request.POST['status_requisição']
+        print(x, '<<<<<<<<<<<<<<<<<<<<')
         form.save()
-        return HttpResponseRedirect(reverse('certificacao_list'))
+        
+        if float(request.POST['nota']) > 100:
+            certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
+            certificacao.nota = 100
+            certificacao.save()
+            
+        elif float(request.POST['nota']) < 0:
+            certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
+            certificacao.nota = 0
+            certificacao.save()
+
+        if request.POST['status_requisição'] == 'aprovado':
+            certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
+            certificacao.status_requisição = 'aguardo'
+            certificacao.save()
+                
+        elif request.POST['status_requisição'] == 'reprovado':
+            certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
+            certificacao.status_requisição = 'aguardo'
+            certificacao.nota = 0
+            certificacao.save()
+        
+        fix = Certificação_de_conhecimento.objects.get(id=certificacao_id)
+        disciplina = fix.disciplina.id
+        
+        return redirect('certificacao_list_professor', disciplina)
     
     requisitor = certificacao.requisitor
     

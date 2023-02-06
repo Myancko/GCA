@@ -12,60 +12,111 @@
     {%  if coordenador == True %}
         <div class="main">
 
+            <div class="fix">
 
-            <div class="requisicoes">
+                <div class="requisicoes">
 
-                <div class="titulo_requisicao">
-                    <p>Requisições de aproveitamento de disciplina</p>
-                </div>
-                <div class="requisicao_content">
-                    <p>{{total_aproveitamentos}}</p>
-                    <a href="{% url 'aproveitamento_list' %}">
-                        <button class="btn_home_default">Visualizar Requisições</button>
-                    </a>
-                </div>
-
-            </div>
-            <div class="certificacoes">
-
-                <div class="titulo_certificacoes">
-                    <p>Requisições de Certificação de conhecimento</p>
-                </div>
-                <div class="certificacao_content">
-
+                    <div class="titulo_requisicao">
+                        <p>Requisições de aproveitamento de disciplina</p>
+                    </div>
                     <div class="requisicao_content">
-                        <p>{{total_certificacao}}</p>
-                        <div class="content_button_column">
-                            
-
-                            <a href="{% url 'iniciar_certificacao' usuario.curso_relacao.id %}">
-                                
-                                <button class="btn_home_default_double">Iniciar Periodo de Certificação</button>
-
-                            </a>
-                        
-                            
-
-                            <a href="{% url 'certificacao_list' %}"   >
-
-                                <button class="btn_home_default_double">Visualizar Requisições</button>
-
-                            </a>
-
-                        </div>
+                        <p>{{total_aproveitamentos}}</p>
+                        <a href="{% url 'aproveitamento_list' %}">
+                            <button class="btn_home_default">Visualizar Requisições</button>
+                        </a>
                     </div>
 
+                </div>
+                <div class="certificacoes">
+
+                    <div class="titulo_certificacoes">
+                        <p>Requisições de Certificação de conhecimento</p>
+                    </div>
+                    <div class="certificacao_content">
+
+                        <div class="requisicao_content">
+                            <p>{{total_certificacao}}</p>
+                            <div class="content_button_column">
+
+
+                                <a href="{% url 'iniciar_certificacao' usuario.curso_relacao.id %}">
+
+                                    <button class="btn_home_default_double">Iniciar Periodo Para Certificação</button>
+
+                                </a>
+                            
+                                <!-- <a href="{% url 'certificacao_list' %}">
+
+                                    <button class="btn_home_default_double">Visualizar Requisições</button>
+
+                                </a> -->
+
+                            </div>
+                        </div>
+
+
+                    </div>
 
                 </div>
+            </div>
 
+            <div class="main_2">
+                <h1 class="color_white">{{ msg }}</h1>
+                <div class="aling_left">
+                    <p class="title_main_2 color_white">Banca</p>
+                </div>
+                {% if user.groups.get == Professor %}
+                    
+                    {% for disciplinas in banca_disciplina %}
+                        <div class="flex_visualizar_certificacao">
+        
+                            <div class="title_certificacao">
+                                <p>Você foi assinado para participar da banca para certificacao de conhecimento da disciplina {{disciplinas.nome}}</p>
+                            </div>
+        
+                            <a class="link_clear" href="{% url 'certificacao_list_professor' disciplinas.id  %}">
+                                <div class="visualizar">
+                                    <p>Visualizar</p>
+                                </div> 
+                            </a>
+        
+                        </div>
+                        
+                    {% endfor %}
+        
+                {% endif %}
             </div>
 
 
         </div>
+
     {%else%}
-    <div class="main">
-        <h1 style="color: white ;">{{ msg }}</h1>
+    <div class="main_2">
+        <!-- <h1 class="color_white">{{ msg }}</h1> -->
+        <div class="aling_left">
+            <p class="title_main_2 color_white">Banca</p>
+        </div>
+        {% if user.groups.get == Professor %}
+            
+            {% for disciplinas in banca_disciplina %}
+                <div class="flex_visualizar_certificacao">
+
+                    <div class="title_certificacao">
+                        <p>Você foi assinado para participar da banca para certificacao de conhecimento da disciplina {{disciplinas.nome}}</p>
+                    </div>
+
+                    <a class="link_clear" href="{% url 'certificacao_list_professor' disciplinas.id  %}">
+                        <div class="visualizar">
+                            <p>Visualizar</p>
+                        </div> 
+                    </a>
+
+                </div>
+                
+            {% endfor %}
+
+        {% endif %}
     </div>
-        
     {% endif %}
+
 {% endblock %}

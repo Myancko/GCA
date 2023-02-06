@@ -108,3 +108,45 @@
 {
     float: right;
 }
+.requisicoes_title
+{
+    color: white;
+    text-align: center;
+    font-size: 26px;
+    margin-top: 1.5%;
+}
+.aproveitamento_certificacao
+{
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    margin-top: 0.7%;
+}
+.aproveitamento, .certificacao
+{
+    overflow: hidden;
+    width: 568px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+}
+.texto_requisicoes
+{
+    font-weight: bold;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.messages li
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-top: 3%;
+    list-style-type: none;
+    margin-bottom: -25px;
+    list-style-type: none;
+    color: red;
+}

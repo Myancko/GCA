@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/lista_aproveitamento.css' %}">
+<title>Lista de Certificações</title>
+
+{% endblock %}
+
+{% block main %}
+<div class="main">
+
+    <div class="main">
+
+        <p class="title">Requisicoes de Certificacao de Conhecimento da Disciplina {{disciplina.nome}}</p>
+    
+        <div class="center">
+            
+            <div class="two_lables">
+                <div>
+                    <p class="label_title">Requisicoes</p>
+
+                    <p class="label_title"></p>
+                
+                </div>
+        
+            </div>
+    
+        </div>
+    
+    
+        <div class="center_2">
+    
+            <div class="list">
+                
+                <table class="table" >
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Requisitor</th>
+                        <th scope="col">Disciplina</th>
+                        <th class="top_side_fourth" scope="col">Nota</th>
+                        <th class="top_side_fifth" scope="col">-</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for dados in certificacoes %}
+                            <tr>
+    
+                                <th scope="row"> {{dados.id}} </th>
+                                <td>{{dados.requisitor}}</td>
+                                <td>{{dados.disciplina}}</td>
+                                <td class="center_tabl_">{{dados.nota}}</td>
+                                <td class="center_table">
+                                    <a href="{% url 'certificacao' dados.id %}">
+    
+                                        <button>
+                                            Visualizar
+                                        </button>
+    
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+    
+    
+        </div>
+     
+    </div>
+
+</div>
+{% endblock %}

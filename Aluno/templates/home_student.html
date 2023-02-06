@@ -10,28 +10,24 @@
 {% block main %}
 
 <div class="main">
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li><p>{{ message }}</p></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <div class="title">
         <h1> Bem-vindo {{ username }}</h1>
     </div>
-
-    {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-
-  <!--   <div class="sl">
-        <p class="curso_text">Curso</p>
-        <div class="bar"></div>
-    </div> -->
 
     {% if curso == None %}
 
         <div class="curso">
 
-            <div style=" border-radius: 5px; justify-content: center;" class="white_bar">
+            <div class="white_bar">
                 <p>Você não está cadastrado(a) em nem um curso, entre em contato com um administrador</p>
             </div>
 
@@ -50,6 +46,35 @@
                     <p>Visualizar Dados</p>
                 </div>
             </a>
+
+        </div>
+
+        <p class="requisicoes_title">Minhas Requisições</p>
+
+        <div class="aproveitamento_certificacao">
+
+
+            <div class="aproveitamento">
+                <p class="texto_requisicoes">Aproveitamento de Disciplina</p>
+                
+                <a class="link_clear" href="{% url 'aluno_requisicoes_de_aproveitamento' %}">
+                    <div class="visualizar">
+                        <p>Visualizar</p>
+                    </div> 
+                </a>
+                
+            </div>
+            
+            <div class="certificacao">
+                <p class="texto_requisicoes">Certificação de Conhecimento</p>
+
+                <a class="link_clear" href="{% url 'aluno_requisicoes_de_certificacao' %}">
+                    <div class="visualizar">
+                        <p>Visualizar</p>
+                    </div> 
+                </a>
+                
+            </div>
 
         </div>
         

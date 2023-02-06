@@ -27,12 +27,18 @@ body
     flex-wrap: wrap;
     border-radius: 3px;
 }
-.dependencias
+.dependencias, .pedagogo, .banca
 {
     display: flex;
     flex-basis: 260px;
     gap: 10px ;
 }
+.banca select
+{
+    width: 200px;
+    height: 75px;
+}
+
 .display_hidden
 {
     visibility: hidden;
@@ -45,7 +51,10 @@ body
     background-color:  #c1c1c1;
     position: absolute;
 }
-
+.dependencias
+{
+    flex-wrap: wrap;
+}
 .star_chain
 {
     display: flex;

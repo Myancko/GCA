@@ -38,6 +38,16 @@
                         <p>Nota:</p>
                         <div>{{form.nota}}</div>
                     </div>
+
+                    <div class="text_content">
+                        <p>banca:</p>
+                        <div>{{form.banca_de_professores}}</div>
+                    </div>
+
+                    <div class="text_content">
+                        <p>Pedagogo:</p>
+                        <div>{{form.pedagogo}}</div>
+                    </div>
                 </div>
             
             </div>
@@ -53,10 +63,9 @@
             
                 <select name="status_requisição"  onchange="this.form.submit()" id="id_status_requisição" multiple>
                 
-                    <option class="reprovar" value="reprovado">Reprovar</option>
-                    <option class="aprovar"  value="aprovado">Aprovar</option>
+                    <option class="reprovar" value="reprovado">Remover Nota</option>
+                    <option class="aprovar"  value="aprovado">inserir Nota</option>
                     
-                
                 </select>
         </div>
     </form>

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block import_title_css %}
+
+<link rel="stylesheet" href="{% static 'css/vizualizar_aluno_curso.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/__modal_selecionarAC.css' %}">
+<title>Lista de requisições de certificacao de conhecimento</title>
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="main">
+        
+        <div class="curso">
+            <p class="titulo_curso">Curso</p>
+
+            <div class="dados_curso">
+                <p>Nome: {{curso}}<br>
+                Periodos: {{curso.periodos}}<br>
+                Total de disciplinas {{ total_disciplinas }}: {{total_de_optativas}} Obrigatoria | {{total_de_nao_optativas}}  Optativa </p>
+            </div>
+        </div>
+
+        <div class="disciplinas">
+            <p class="titulo_disciplina">Requições de certificacao de conhecimento: {{total_requisicoes_certificacao}}</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Periodo</th>
+                      <th scope="col">Optativa</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for requisicoes in requisicoes_de_certificacao %}
+
+                        {% if requisicoes.status_requisição == 'reprovado' %}
+                            <tr class="reprovado">
+                                <th scope="row"> {{requisicoes.id}} </th>
+                                <td>{{requisicoes.disciplina.nome}}</td>
+                                <td>{{requisicoes.disciplina.perido}}</td>
+                                <td>{{requisicoes.disciplina.optativa}}</td>
+                                <td><!-- {{requisicoes.status_requisição}} -->Reprovado</td>
+                            </tr>
+                        {% elif requisicoes.status_requisição == 'aprovado' %}
+                            <tr class="aprovado">
+                                <th scope="row"> {{requisicoes.id}} </th>
+                                <td>{{requisicoes.disciplina.nome}}</td>
+                                <td>{{requisicoes.disciplina.perido}}</td>
+                                <td>{{requisicoes.disciplina.optativa}}</td>
+                                <td><!-- {{requisicoes.status_requisição}} -->Aprovado</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <th scope="row"> {{requisicoes.id}} </th>
+                                <td>{{requisicoes.disciplina.nome}}</td>
+                                <td>{{requisicoes.disciplina.perido}}</td>
+                                <td>{{requisicoes.disciplina.optativa}}</td>
+                                <td><!-- {{requisicoes.status_requisição}} -->Aguardo</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+{% block js%}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+{% endblock %}

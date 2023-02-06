@@ -15,6 +15,14 @@ form
     align-items: center;
 
 }
+.title
+{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 21px;
+    padding-top: 30px;
+}
 .search_bar
 {
     display: flex;
