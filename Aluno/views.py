@@ -17,6 +17,9 @@ User = get_user_model()
 from django.views.generic.edit import CreateView
 from datetime import date, timedelta
 from django.contrib import messages
+from django.contrib.auth.models import Group
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 dia_de_hj = date.today()
 
 
@@ -58,10 +61,10 @@ def home_aluno (request):
   
 @login_required(login_url='/user/login/')  
 
+@login_required(login_url='/user/login/')
 def aluno_curso (request, curso_id):
     
     aluno = request.user
-
     #curso = Curso.objects.all()
     curso  = Curso.objects.get(id=curso_id)
     m2m  = curso.disciplina.all()
@@ -124,7 +127,7 @@ class password_change(PasswordChangeView):
         
         return super().form_valid(form)
     
- 
+@login_required(login_url='/user/login/')
 def vizualizar_minhas_requisicoes_de_aproveitamento (request):
     
     aluno = request.user
@@ -150,6 +153,7 @@ def vizualizar_minhas_requisicoes_de_aproveitamento (request):
                                                                                   'total_de_optativas': len_optativas,
                                                                                   'total_de_nao_optativas' : len_nao_opttivas})
 
+@login_required(login_url='/user/login/')
 def vizualizar_minhas_requisicoes_de_certificacao (request):
     
     aluno = request.user
@@ -173,7 +177,8 @@ def vizualizar_minhas_requisicoes_de_certificacao (request):
                                                                                 'total_disciplinas' : len_disciplinas,
                                                                                 'total_de_optativas': len_optativas,
                                                                                 'total_de_nao_optativas' : len_nao_opttivas})
-        
+
+@login_required(login_url='/user/login/')      
 def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
     
     
@@ -243,7 +248,7 @@ def requisitar_aproveitamento_de_disciplina (request, disciplina_id):
             return render (request, 'requisitar_aproveitamento_de_disciplina.html', context)
     
 
-class requisitar_certificacao_de_conhecimento_class(CreateView):
+class requisitar_certificacao_de_conhecimento_class(LoginRequiredMixin, CreateView):
     form_class  = Form_certificação_de_conhecimento
     success_url = reverse_lazy('sweet_home')
     template_name = 'requisitar_certificação_de_conhecimento.html'

@@ -12,7 +12,9 @@ from django.contrib.auth import get_user_model
 from Aluno.form import Form_aproveitamento_de_disciplina, Form_certificação_de_conhecimento
 from django.db.models import Q
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 from datetime import date
+
 from .form import Form_disciplina_iniciar_perido_de_certificacao
 
 
@@ -21,6 +23,7 @@ User = get_user_model()
 
 # Create your views here.
 
+@login_required(login_url='/user/login/')
 def home_professor (request):
     
     try:
@@ -184,7 +187,8 @@ def home_professor (request):
                                                        'banca':banca_user,
                                                        'banca_disciplina':banca_disciplina,
                                                        'certificacao':certificacao}) 
-    
+
+@login_required(login_url='/user/login/')
 def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
 
     aluno = request.user
@@ -211,7 +215,7 @@ def iniciar_periodo_de_certificacao_listagem_disciplinas(request, curso_id):
     
     return  render(request, 'periodo_de_certificacao_listagem.html', {})
 
-
+@login_required(login_url='/user/login/')
 def lista_certificacao_professor (request, id):
     
     disciplina = Disciplina.objects.get(id=id)
@@ -229,7 +233,7 @@ def lista_certificacao_professor (request, id):
     return  render(request, 'certificacao_lista_professor.html', {'certificacoes':certificacao_id,
                                                                   'disciplina':disciplina})
 
-
+@login_required(login_url='/user/login/')
 def lista_aproveitamento (request):
     
     professor = User.objects.get(id=request.user.id)
@@ -262,6 +266,7 @@ def lista_aproveitamento (request):
     return  render(request, 'requisicoes_aproveitamento_lista.html', {'aproveitamento': requisicoes_de_aproveitamento,
                                                                       'len_aproveitamento': len(requisicoes_de_aproveitamento)})
 
+@login_required(login_url='/user/login/')
 def lista_certificacao (request):
     
     professor = User.objects.get(id=request.user.id)
@@ -294,6 +299,7 @@ def lista_certificacao (request):
     return  render(request, 'requisicoes_certificação_lista.html', {'certificacao': requisicoes_de_certificacao,
                                                                     'len_certificacao':len(requisicoes_de_certificacao)})
 
+@login_required(login_url='/user/login/')
 def iniciar_periodo_disciplina(request, disciplina_id):
 
     dados_disciplina = Disciplina.objects.get(id=disciplina_id)
@@ -326,6 +332,7 @@ def iniciar_periodo_disciplina(request, disciplina_id):
                                                                'form':form}) 
 
 
+@login_required(login_url='/user/login/')
 def aproveitamento (request, aproveitamento_id):
     
     aproveitamento = Aproveitamento_de_disciplina.objects.get(id=aproveitamento_id)
@@ -341,7 +348,8 @@ def aproveitamento (request, aproveitamento_id):
     print(requisitor)
     return render(request, 'aproveitamento.html' , {'aproveitamento': aproveitamento,
                                                     'form' : form})
-    
+
+@login_required(login_url='/user/login/')
 def certificacao (request, certificacao_id):
     
     certificacao = Certificação_de_conhecimento.objects.get(id=certificacao_id)
@@ -427,12 +435,14 @@ class password_change(PasswordChangeView):
         
         return super().form_valid(form)
  
+@login_required(login_url='/user/login/')
 def search_aproveitamento (request, text):
 
     aproveitamento = Aproveitamento_de_disciplina.objects.filter(requisitor__username__contains=text)
     print(aproveitamento)
     return render(request, 'ajax/requisicoes_aproveitamento.html', {'aproveitamento': aproveitamento})
 
+@login_required(login_url='/user/login/')
 def search_certificacao (request, text):
 
     certificacao = Certificação_de_conhecimento.objects.filter(requisitor__username__contains=text)

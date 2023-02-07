@@ -54,7 +54,7 @@ def home_view (request):
         print(disciplina.data_final, '<<<<<<<')   
         if disciplina.data_final != None:
             
-            if disciplina.data_final < date.today():
+            if disciplina.data_final > date.today():
                 print(disciplina.nome,'expirou')
                 disiciplina_q_expirou = disciplina
                 disiciplina_q_expirou.banca_de_professores.clear()
