@@ -210,6 +210,7 @@ class SignUpView_Student(LoginRequiredMixin,CreateView):
         email = form.cleaned_data['email']
         msg = 'Ola Aluno '+ str(username) + '\nSua matricula é: ' +  str(matricula)+'\nSua senha é: '+str(senha)
         
+        res = send_mail( 'Login e Senha do GCA',msg,'projectgca394@gmail.com',[email])
         messages.success(self.request, "Usuário cadastrado com sucesso!")
         
         return response
@@ -288,7 +289,7 @@ class SignUpView_Teacher(LoginRequiredMixin,CreateView):
         senha = form.cleaned_data['password2']
         email = form.cleaned_data['email']
         msg = 'Ola Professor '+ str(username) + '\nSua matricula é: ' +  str(matricula)+'\nSua senha é: '+str(senha)
-        res = send_mail( 'Login e Senha do GCA',msg,'projectgca394@gmail.com',['weptpear394@gmail.com'])
+        res = send_mail( 'Login e Senha do GCA',msg,'projectgca394@gmail.com',[email])
         messages.success(self.request, "Usuário cadastrado com sucesso!")
         
         return response
