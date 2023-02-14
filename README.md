@@ -4,3 +4,5 @@ Projeto integrador do quarto periodo, aonde o objetivo era desenvolver um sistem
 A O login do admin é:
 login: 1
 senha: pewpewpew
+
+Lembre de rodar o codigo em um ambiente virtual
